@@ -8,7 +8,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen">
-      {/* Hero background image - common room with modern design */}
+      {/* Hero background image - looking for common room-IMG_0083-HDR, fallback to terrace */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
         style={{

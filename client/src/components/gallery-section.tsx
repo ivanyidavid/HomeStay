@@ -1,54 +1,85 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
+// Import your actual photos
+import terraceDSC8897 from "@assets/photos/terrace-DSC_8897.jpg";
+import terraceDSC8898 from "@assets/photos/terrace-DSC_8898.jpg";
+import terraceDSC8899 from "@assets/photos/terrace-DSC_8899.jpg";
+import terraceDSC8967 from "@assets/photos/terrace-DSC_8967.jpg";
+import terraceDSC8968 from "@assets/photos/terrace-DSC_8968.jpg";
+import terraceDSC8969 from "@assets/photos/terrace-DSC_8969.jpg";
+import terraceIMG0030 from "@assets/photos/terrace-IMG_0030.jpg";
+import terraceIMG0104 from "@assets/photos/terrace-IMG_0104.jpg";
+import terraceIMG0106 from "@assets/photos/terrace-IMG_0106.jpg";
+import terraceIMG0113 from "@assets/photos/terrace-IMG_0113.jpg";
+import stairsIMG9969 from "@assets/photos/stairs-IMG_9969.jpg";
+
 const galleryImages = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-    alt: "House exterior",
-    title: "Beautiful House Exterior"
+    src: terraceIMG0106,
+    alt: "Terrace with panoramic views",
+    title: "Outdoor Terrace - IMG_0106"
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-    alt: "Living space",
-    title: "Spacious Living Room"
+    src: terraceDSC8897,
+    alt: "Terrace area",
+    title: "Beautiful Terrace - DSC_8897"
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400",
-    alt: "Bedroom",
-    title: "Comfortable Bedroom"
+    src: terraceDSC8898,
+    alt: "Terrace space",
+    title: "Spacious Terrace - DSC_8898"
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-    alt: "Kitchen area",
-    title: "Modern Kitchen"
+    src: terraceDSC8899,
+    alt: "Terrace balcony",
+    title: "Terrace Balcony - DSC_8899"
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-    alt: "Bathroom",
-    title: "Luxury Bathroom"
+    src: terraceDSC8967,
+    alt: "Terrace view",
+    title: "Terrace Views - DSC_8967"
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-    alt: "Terrace",
-    title: "Outdoor Terrace"
+    src: terraceDSC8968,
+    alt: "Outdoor space",
+    title: "Outdoor Space - DSC_8968"
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-    alt: "Garden area",
-    title: "Beautiful Garden"
+    src: terraceDSC8969,
+    alt: "Balcony area",
+    title: "Balcony Area - DSC_8969"
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-    alt: "Mountain views",
-    title: "Scenic Mountain Views"
+    src: terraceIMG0030,
+    alt: "Terrace seating",
+    title: "Terrace Seating - IMG_0030"
+  },
+  {
+    id: 9,
+    src: terraceIMG0104,
+    alt: "Terrace space",
+    title: "Terrace Space - IMG_0104"
+  },
+  {
+    id: 10,
+    src: terraceIMG0113,
+    alt: "Terrace area",
+    title: "Terrace Area - IMG_0113"
+  },
+  {
+    id: 11,
+    src: stairsIMG9969,
+    alt: "Interior stairs",
+    title: "Beautiful Stairs - IMG_9969"
   }
 ];
 
