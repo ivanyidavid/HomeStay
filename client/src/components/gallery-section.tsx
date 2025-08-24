@@ -44,6 +44,9 @@ import outsideDSC8981 from "@assets/photos/outside-DSC_8981.jpg";
 import outsideDSC8985 from "@assets/photos/outside-DSC_8985.jpg";
 import outsideIMG0117 from "@assets/photos/outside-IMG_0117.jpg";
 import outsideIMG0118 from "@assets/photos/outside-IMG_0118.jpg";
+import img5538 from "@assets/photos/IMG_5538.jpg";
+import img9806 from "@assets/photos/IMG_9806.jpg";
+import img6039 from "@assets/photos/IMG_6039.jpg";
 import stairsIMG9969 from "@assets/photos/stairs-IMG_9969.jpg";
 import terraceDSC8897 from "@assets/photos/terrace-DSC_8897.jpg";
 import terraceDSC8898 from "@assets/photos/terrace-DSC_8898.jpg";
@@ -113,20 +116,25 @@ const galleryImages = [
   { id: 41, src: outsideIMG0117, alt: "Exterior main", title: "Outside - IMG_0117" },
   { id: 42, src: outsideIMG0118, alt: "Exterior angle", title: "Outside - IMG_0118" },
   
+  // Additional Photos (converted from HEIC)
+  { id: 43, src: img5538, alt: "House view", title: "House View - IMG_5538" },
+  { id: 44, src: img9806, alt: "Property view", title: "Property View - IMG_9806" },
+  { id: 45, src: img6039, alt: "Panoramic hills view", title: "Panoramic View - IMG_6039" },
+  
   // Stairs
-  { id: 43, src: stairsIMG9969, alt: "Interior stairs", title: "Stairs - IMG_9969" },
+  { id: 46, src: stairsIMG9969, alt: "Interior stairs", title: "Stairs - IMG_9969" },
   
   // Terrace
-  { id: 44, src: terraceDSC8897, alt: "Terrace area", title: "Terrace - DSC_8897" },
-  { id: 45, src: terraceDSC8898, alt: "Terrace space", title: "Terrace - DSC_8898" },
-  { id: 46, src: terraceDSC8899, alt: "Terrace balcony", title: "Terrace - DSC_8899" },
-  { id: 47, src: terraceDSC8967, alt: "Terrace view", title: "Terrace - DSC_8967" },
-  { id: 48, src: terraceDSC8968, alt: "Terrace outdoor", title: "Terrace - DSC_8968" },
-  { id: 49, src: terraceDSC8969, alt: "Terrace balcony", title: "Terrace - DSC_8969" },
-  { id: 50, src: terraceIMG0030, alt: "Terrace seating", title: "Terrace - IMG_0030" },
-  { id: 51, src: terraceIMG0104, alt: "Terrace space", title: "Terrace - IMG_0104" },
-  { id: 52, src: terraceIMG0106, alt: "Terrace panoramic", title: "Terrace - IMG_0106" },
-  { id: 53, src: terraceIMG0113, alt: "Terrace area", title: "Terrace - IMG_0113" }
+  { id: 47, src: terraceDSC8897, alt: "Terrace area", title: "Terrace - DSC_8897" },
+  { id: 48, src: terraceDSC8898, alt: "Terrace space", title: "Terrace - DSC_8898" },
+  { id: 49, src: terraceDSC8899, alt: "Terrace balcony", title: "Terrace - DSC_8899" },
+  { id: 50, src: terraceDSC8967, alt: "Terrace view", title: "Terrace - DSC_8967" },
+  { id: 51, src: terraceDSC8968, alt: "Terrace outdoor", title: "Terrace - DSC_8968" },
+  { id: 52, src: terraceDSC8969, alt: "Terrace balcony", title: "Terrace - DSC_8969" },
+  { id: 53, src: terraceIMG0030, alt: "Terrace seating", title: "Terrace - IMG_0030" },
+  { id: 54, src: terraceIMG0104, alt: "Terrace space", title: "Terrace - IMG_0104" },
+  { id: 55, src: terraceIMG0106, alt: "Terrace panoramic", title: "Terrace - IMG_0106" },
+  { id: 56, src: terraceIMG0113, alt: "Terrace area", title: "Terrace - IMG_0113" }
 ];
 
 export default function GallerySection() {

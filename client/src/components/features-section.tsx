@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 
 // Import actual photos for features
-import outsideIMG0117 from "@assets/photos/outside-IMG_0117.jpg";
+import img6039 from "@assets/photos/IMG_6039.jpg";
 import bedroom1IMG9992 from "@assets/photos/bedroom1-IMG_9992-HDR.jpg";
 import kitchenDSC8917 from "@assets/photos/kitchen-DSC_8917-HDR.jpg";
 import commonRoomDSC8961 from "@assets/photos/common room-DSC_8961.jpg";
@@ -13,9 +13,9 @@ const features = [
     id: 1,
     title: "🌄 Peaceful & Mesmerizing Views",
     description: "Breathtaking panoramic views of the hills that will leave you speechless. Perfect for morning coffee and evening relaxation.",
-    image: outsideIMG0117,
+    image: img6039,
     alt: "Panoramic hills view",
-    note: "Using outside photo for panoramic views"
+    note: "Using actual photo IMG_6039 (converted from HEIC)"
   },
   {
     id: 2,
