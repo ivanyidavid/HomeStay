@@ -53,12 +53,13 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Location & Access</h4>
+            <h4 className="text-lg font-semibold mb-4">Location & Contact</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li>📍 Verőce Hills, Hungary</li>
               <li>🚊 35 minutes from Budapest Nyugati</li>
               <li>🚶‍♂️ 10-15 minutes walk from train station</li>
               <li>🚗 Parking for up to 3 cars</li>
+              <li>✉️ valeriano.donzelli@gmail.com</li>
             </ul>
           </div>
         </div>
