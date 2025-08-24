@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertBookingSchema } from "@shared/schema";
 import { z } from "zod";
 import { googleSheetsService } from "./googleSheets";
+import { emailService } from "./emailService";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all bookings
@@ -143,6 +144,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       const booking = await storage.createBooking(validatedData);
+      
+      // Send email notification
+      try {
+        await emailService.sendBookingNotification(booking);
+      } catch (error) {
+        console.error('Failed to send booking notification email:', error);
+        // Don't fail the booking if email fails
+      }
+      
       res.status(201).json(booking);
     } catch (error) {
       if (error instanceof z.ZodError) {
