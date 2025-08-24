@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 
 // Import actual photos for features
+import outsideIMG0117 from "@assets/photos/outside-IMG_0117.jpg";
+import bedroom1IMG9992 from "@assets/photos/bedroom1-IMG_9992-HDR.jpg";
+import kitchenDSC8917 from "@assets/photos/kitchen-DSC_8917-HDR.jpg";
+import commonRoomDSC8961 from "@assets/photos/common room-DSC_8961.jpg";
+import bathroomDownstairsDSC8881 from "@assets/photos/bathroom downstairs-DSC_8881.jpg";
 import terraceIMG0106 from "@assets/photos/terrace-IMG_0106.jpg";
 
 const features = [
@@ -8,41 +13,41 @@ const features = [
     id: 1,
     title: "🌄 Peaceful & Mesmerizing Views",
     description: "Breathtaking panoramic views of the hills that will leave you speechless. Perfect for morning coffee and evening relaxation.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+    image: outsideIMG0117,
     alt: "Panoramic hills view",
-    note: "Looking for IMG_6039"
+    note: "Using outside photo for panoramic views"
   },
   {
     id: 2,
     title: "👥 Hosts Up to 11 Guests",
     description: "Ideal for groups, team buildings, parties, and retreats. Three bedrooms plus convertible living spaces ensure everyone has comfort.",
-    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=400",
+    image: bedroom1IMG9992,
     alt: "Comfortable bedroom",
-    note: "Looking for bedroom1-IMG_9992-HDR"
+    note: "Using actual photo bedroom1-IMG_9992-HDR"
   },
   {
     id: 3,
     title: "🍳 Fully-Equipped Stylish Kitchen",
     description: "Cook together in our modern, fully-equipped kitchen. Everything you need for memorable meals and group cooking experiences.",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+    image: kitchenDSC8917,
     alt: "Stylish kitchen",
-    note: "Looking for kitchen-DSC_8917-HDR"
+    note: "Using actual photo kitchen-DSC_8917-HDR"
   },
   {
     id: 4,
     title: "🛋️ Vast Living Room",
     description: "Extra-large couch and sofa-bed perfect for socializing. The heart of your stay where memories are made.",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+    image: commonRoomDSC8961,
     alt: "Spacious living room",
-    note: "Looking for common room-DSC_8961"
+    note: "Using actual photo common room-DSC_8961"
   },
   {
     id: 5,
     title: "🚿 Spectacular Bathrooms",
     description: "Two fully-equipped bathrooms with modern fixtures. Never wait in line, even with a full house.",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+    image: bathroomDownstairsDSC8881,
     alt: "Modern bathroom",
-    note: "Looking for bathroom downstairs-DSC_8881"
+    note: "Using actual photo bathroom downstairs-DSC_8881"
   },
   {
     id: 6,

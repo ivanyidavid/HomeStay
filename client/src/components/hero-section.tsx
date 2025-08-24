@@ -1,3 +1,5 @@
+import commonRoomIMG0083 from "@assets/photos/common room-IMG_0083-HDR.jpg";
+
 export default function HeroSection() {
   const scrollToBooking = () => {
     const element = document.getElementById("booking");
@@ -8,11 +10,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen">
-      {/* Hero background image - looking for common room-IMG_0083-HDR, fallback to terrace */}
+      {/* Hero background image - common room-IMG_0083-HDR */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')"
+          backgroundImage: `url(${commonRoomIMG0083})`
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>

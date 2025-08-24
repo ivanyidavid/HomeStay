@@ -1,7 +1,50 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-// Import your actual photos
+// Import all your uploaded photos
+import bathroomDownstairsDSC8881 from "@assets/photos/bathroom downstairs-DSC_8881.jpg";
+import bathroomDownstairsDSC8886 from "@assets/photos/bathroom downstairs-DSC_8886.jpg";
+import bathroomUpperIMG0093 from "@assets/photos/bathroom upper-IMG_0093-HDR.jpg";
+import bathroomUpperIMG0101 from "@assets/photos/bathroom upper-IMG_0101.jpg";
+import bedroom1IMG9992 from "@assets/photos/bedroom1-IMG_9992-HDR.jpg";
+import bedroom1IMG9996 from "@assets/photos/bedroom1-IMG_9996.jpg";
+import bedroom1IMG9998 from "@assets/photos/bedroom1-IMG_9998.jpg";
+import bedroom2DSC8860 from "@assets/photos/bedroom2-DSC_8860-HDR.jpg";
+import bedroom2DSC8870 from "@assets/photos/bedroom2-DSC_8870.jpg";
+import bedroom2DSC8871 from "@assets/photos/bedroom2-DSC_8871-HDR.jpg";
+import bedroom2IMG0021 from "@assets/photos/bedroom2-IMG_0021.jpg";
+import bedroom2IMG0027 from "@assets/photos/bedroom2-IMG_0027.jpg";
+import bunkBedroomDSC8843 from "@assets/photos/bunk bedroom-DSC_8843.jpg";
+import bunkBedroomDSC8845 from "@assets/photos/bunk bedroom-DSC_8845.jpg";
+import bunkBedroomDSC8848 from "@assets/photos/bunk bedroom-DSC_8848.jpg";
+import bunkBedroomDSC8850 from "@assets/photos/bunk bedroom-DSC_8850.jpg";
+import bunkBedroomIMG0001 from "@assets/photos/bunk bedroom-IMG_0001-HDR.jpg";
+import bunkBedroomIMG0015 from "@assets/photos/bunk bedroom-IMG_0015.jpg";
+import commonRoomDSC8941 from "@assets/photos/common room-DSC_8941.jpg";
+import commonRoomDSC8954 from "@assets/photos/common room-DSC_8954.jpg";
+import commonRoomDSC8961 from "@assets/photos/common room-DSC_8961.jpg";
+import commonRoomIMG0068 from "@assets/photos/common room-IMG_0068-HDR.jpg";
+import commonRoomIMG0083 from "@assets/photos/common room-IMG_0083-HDR.jpg";
+import kitchenDSC8902 from "@assets/photos/kitchen-DSC_8902.jpg";
+import kitchenDSC8914 from "@assets/photos/kitchen-DSC_8914.jpg";
+import kitchenDSC8917 from "@assets/photos/kitchen-DSC_8917-HDR.jpg";
+import kitchenDSC8923 from "@assets/photos/kitchen-DSC_8923.jpg";
+import kitchenDSC8930 from "@assets/photos/kitchen-DSC_8930-HDR.jpg";
+import kitchenDSC8933 from "@assets/photos/kitchen-DSC_8933-HDR.jpg";
+import kitchenIMG0048 from "@assets/photos/kitchen-IMG_0048-HDR.jpg";
+import kitchenIMG0061 from "@assets/photos/kitchen-IMG_0061.jpg";
+import kitchenIMG0062 from "@assets/photos/kitchen-IMG_0062.jpg";
+import kitchenIMG0064 from "@assets/photos/kitchen-IMG_0064.jpg";
+import kitchenIMG0066 from "@assets/photos/kitchen-IMG_0066.jpg";
+import outsideDSC8970 from "@assets/photos/outside-DSC_8970.jpg";
+import outsideDSC8972 from "@assets/photos/outside-DSC_8972.jpg";
+import outsideDSC8974 from "@assets/photos/outside-DSC_8974.jpg";
+import outsideDSC8978 from "@assets/photos/outside-DSC_8978.jpg";
+import outsideDSC8981 from "@assets/photos/outside-DSC_8981.jpg";
+import outsideDSC8985 from "@assets/photos/outside-DSC_8985.jpg";
+import outsideIMG0117 from "@assets/photos/outside-IMG_0117.jpg";
+import outsideIMG0118 from "@assets/photos/outside-IMG_0118.jpg";
+import stairsIMG9969 from "@assets/photos/stairs-IMG_9969.jpg";
 import terraceDSC8897 from "@assets/photos/terrace-DSC_8897.jpg";
 import terraceDSC8898 from "@assets/photos/terrace-DSC_8898.jpg";
 import terraceDSC8899 from "@assets/photos/terrace-DSC_8899.jpg";
@@ -12,75 +55,78 @@ import terraceIMG0030 from "@assets/photos/terrace-IMG_0030.jpg";
 import terraceIMG0104 from "@assets/photos/terrace-IMG_0104.jpg";
 import terraceIMG0106 from "@assets/photos/terrace-IMG_0106.jpg";
 import terraceIMG0113 from "@assets/photos/terrace-IMG_0113.jpg";
-import stairsIMG9969 from "@assets/photos/stairs-IMG_9969.jpg";
 
 const galleryImages = [
-  {
-    id: 1,
-    src: terraceIMG0106,
-    alt: "Terrace with panoramic views",
-    title: "Outdoor Terrace - IMG_0106"
-  },
-  {
-    id: 2,
-    src: terraceDSC8897,
-    alt: "Terrace area",
-    title: "Beautiful Terrace - DSC_8897"
-  },
-  {
-    id: 3,
-    src: terraceDSC8898,
-    alt: "Terrace space",
-    title: "Spacious Terrace - DSC_8898"
-  },
-  {
-    id: 4,
-    src: terraceDSC8899,
-    alt: "Terrace balcony",
-    title: "Terrace Balcony - DSC_8899"
-  },
-  {
-    id: 5,
-    src: terraceDSC8967,
-    alt: "Terrace view",
-    title: "Terrace Views - DSC_8967"
-  },
-  {
-    id: 6,
-    src: terraceDSC8968,
-    alt: "Outdoor space",
-    title: "Outdoor Space - DSC_8968"
-  },
-  {
-    id: 7,
-    src: terraceDSC8969,
-    alt: "Balcony area",
-    title: "Balcony Area - DSC_8969"
-  },
-  {
-    id: 8,
-    src: terraceIMG0030,
-    alt: "Terrace seating",
-    title: "Terrace Seating - IMG_0030"
-  },
-  {
-    id: 9,
-    src: terraceIMG0104,
-    alt: "Terrace space",
-    title: "Terrace Space - IMG_0104"
-  },
-  {
-    id: 10,
-    src: terraceIMG0113,
-    alt: "Terrace area",
-    title: "Terrace Area - IMG_0113"
-  },
-  {
-    id: 11,
-    src: stairsIMG9969,
-    alt: "Interior stairs",
-    title: "Beautiful Stairs - IMG_9969"
-  }
+  // Bathrooms
+  { id: 1, src: bathroomDownstairsDSC8881, alt: "Downstairs bathroom", title: "Bathroom Downstairs - DSC_8881" },
+  { id: 2, src: bathroomDownstairsDSC8886, alt: "Downstairs bathroom detail", title: "Bathroom Downstairs - DSC_8886" },
+  { id: 3, src: bathroomUpperIMG0093, alt: "Upper bathroom", title: "Bathroom Upper - IMG_0093-HDR" },
+  { id: 4, src: bathroomUpperIMG0101, alt: "Upper bathroom detail", title: "Bathroom Upper - IMG_0101" },
+  
+  // Bedroom 1
+  { id: 5, src: bedroom1IMG9992, alt: "First bedroom", title: "Bedroom 1 - IMG_9992-HDR" },
+  { id: 6, src: bedroom1IMG9996, alt: "First bedroom view", title: "Bedroom 1 - IMG_9996" },
+  { id: 7, src: bedroom1IMG9998, alt: "First bedroom detail", title: "Bedroom 1 - IMG_9998" },
+  
+  // Bedroom 2
+  { id: 8, src: bedroom2DSC8860, alt: "Second bedroom", title: "Bedroom 2 - DSC_8860-HDR" },
+  { id: 9, src: bedroom2DSC8870, alt: "Second bedroom view", title: "Bedroom 2 - DSC_8870" },
+  { id: 10, src: bedroom2DSC8871, alt: "Second bedroom detail", title: "Bedroom 2 - DSC_8871-HDR" },
+  { id: 11, src: bedroom2IMG0021, alt: "Second bedroom angle", title: "Bedroom 2 - IMG_0021" },
+  { id: 12, src: bedroom2IMG0027, alt: "Second bedroom space", title: "Bedroom 2 - IMG_0027" },
+  
+  // Bunk Bedroom
+  { id: 13, src: bunkBedroomDSC8843, alt: "Bunk bed room", title: "Bunk Bedroom - DSC_8843" },
+  { id: 14, src: bunkBedroomDSC8845, alt: "Bunk bed area", title: "Bunk Bedroom - DSC_8845" },
+  { id: 15, src: bunkBedroomDSC8848, alt: "Bunk bed space", title: "Bunk Bedroom - DSC_8848" },
+  { id: 16, src: bunkBedroomDSC8850, alt: "Bunk bed room view", title: "Bunk Bedroom - DSC_8850" },
+  { id: 17, src: bunkBedroomIMG0001, alt: "Bunk bedroom HDR", title: "Bunk Bedroom - IMG_0001-HDR" },
+  { id: 18, src: bunkBedroomIMG0015, alt: "Bunk bedroom detail", title: "Bunk Bedroom - IMG_0015" },
+  
+  // Common Room
+  { id: 19, src: commonRoomDSC8941, alt: "Living room", title: "Common Room - DSC_8941" },
+  { id: 20, src: commonRoomDSC8954, alt: "Living room view", title: "Common Room - DSC_8954" },
+  { id: 21, src: commonRoomDSC8961, alt: "Living room space", title: "Common Room - DSC_8961" },
+  { id: 22, src: commonRoomIMG0068, alt: "Living room HDR", title: "Common Room - IMG_0068-HDR" },
+  { id: 23, src: commonRoomIMG0083, alt: "Living room main", title: "Common Room - IMG_0083-HDR" },
+  
+  // Kitchen
+  { id: 24, src: kitchenDSC8902, alt: "Kitchen area", title: "Kitchen - DSC_8902" },
+  { id: 25, src: kitchenDSC8914, alt: "Kitchen view", title: "Kitchen - DSC_8914" },
+  { id: 26, src: kitchenDSC8917, alt: "Kitchen main", title: "Kitchen - DSC_8917-HDR" },
+  { id: 27, src: kitchenDSC8923, alt: "Kitchen detail", title: "Kitchen - DSC_8923" },
+  { id: 28, src: kitchenDSC8930, alt: "Kitchen HDR", title: "Kitchen - DSC_8930-HDR" },
+  { id: 29, src: kitchenDSC8933, alt: "Kitchen space", title: "Kitchen - DSC_8933-HDR" },
+  { id: 30, src: kitchenIMG0048, alt: "Kitchen angle", title: "Kitchen - IMG_0048-HDR" },
+  { id: 31, src: kitchenIMG0061, alt: "Kitchen view", title: "Kitchen - IMG_0061" },
+  { id: 32, src: kitchenIMG0062, alt: "Kitchen detail", title: "Kitchen - IMG_0062" },
+  { id: 33, src: kitchenIMG0064, alt: "Kitchen space", title: "Kitchen - IMG_0064" },
+  { id: 34, src: kitchenIMG0066, alt: "Kitchen area", title: "Kitchen - IMG_0066" },
+  
+  // Outside Views
+  { id: 35, src: outsideDSC8970, alt: "Exterior view", title: "Outside - DSC_8970" },
+  { id: 36, src: outsideDSC8972, alt: "Exterior area", title: "Outside - DSC_8972" },
+  { id: 37, src: outsideDSC8974, alt: "Exterior space", title: "Outside - DSC_8974" },
+  { id: 38, src: outsideDSC8978, alt: "Exterior detail", title: "Outside - DSC_8978" },
+  { id: 39, src: outsideDSC8981, alt: "Exterior view", title: "Outside - DSC_8981" },
+  { id: 40, src: outsideDSC8985, alt: "Exterior panorama", title: "Outside - DSC_8985" },
+  { id: 41, src: outsideIMG0117, alt: "Exterior main", title: "Outside - IMG_0117" },
+  { id: 42, src: outsideIMG0118, alt: "Exterior angle", title: "Outside - IMG_0118" },
+  
+  // Stairs
+  { id: 43, src: stairsIMG9969, alt: "Interior stairs", title: "Stairs - IMG_9969" },
+  
+  // Terrace
+  { id: 44, src: terraceDSC8897, alt: "Terrace area", title: "Terrace - DSC_8897" },
+  { id: 45, src: terraceDSC8898, alt: "Terrace space", title: "Terrace - DSC_8898" },
+  { id: 46, src: terraceDSC8899, alt: "Terrace balcony", title: "Terrace - DSC_8899" },
+  { id: 47, src: terraceDSC8967, alt: "Terrace view", title: "Terrace - DSC_8967" },
+  { id: 48, src: terraceDSC8968, alt: "Terrace outdoor", title: "Terrace - DSC_8968" },
+  { id: 49, src: terraceDSC8969, alt: "Terrace balcony", title: "Terrace - DSC_8969" },
+  { id: 50, src: terraceIMG0030, alt: "Terrace seating", title: "Terrace - IMG_0030" },
+  { id: 51, src: terraceIMG0104, alt: "Terrace space", title: "Terrace - IMG_0104" },
+  { id: 52, src: terraceIMG0106, alt: "Terrace panoramic", title: "Terrace - IMG_0106" },
+  { id: 53, src: terraceIMG0113, alt: "Terrace area", title: "Terrace - IMG_0113" }
 ];
 
 export default function GallerySection() {
