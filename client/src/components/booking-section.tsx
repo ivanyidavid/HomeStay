@@ -25,7 +25,7 @@ const roomOptions = [
     description: "Comfortable room with two single beds",
     maxGuests: 2,
     pricePerNight: 80,
-    image: bedroom1IMG9992,
+    image: bedroom2DSC8860,
     features: ["2 Single Beds", "Shared Bathroom", "Mountain Views"]
   },
   {
