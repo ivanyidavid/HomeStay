@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -146,6 +147,40 @@ const galleryImages = [
 
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
+  
+  const goToPrevious = () => {
+    if (!selectedImage) return;
+    const currentIndex = galleryImages.findIndex(img => img.id === selectedImage.id);
+    const previousIndex = currentIndex > 0 ? currentIndex - 1 : galleryImages.length - 1;
+    setSelectedImage(galleryImages[previousIndex]);
+  };
+  
+  const goToNext = () => {
+    if (!selectedImage) return;
+    const currentIndex = galleryImages.findIndex(img => img.id === selectedImage.id);
+    const nextIndex = currentIndex < galleryImages.length - 1 ? currentIndex + 1 : 0;
+    setSelectedImage(galleryImages[nextIndex]);
+  };
+  
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!selectedImage) return;
+      
+      if (event.key === 'ArrowLeft') {
+        goToPrevious();
+      } else if (event.key === 'ArrowRight') {
+        goToNext();
+      } else if (event.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+    
+    if (selectedImage) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [selectedImage]);
 
   return (
     <section id="gallery" className="py-16 bg-white">
@@ -193,15 +228,47 @@ export default function GallerySection() {
 
       {/* Image modal */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl w-full p-0">
+        <DialogContent className="max-w-6xl w-full p-0 bg-black">
           {selectedImage && (
             <div className="relative">
               <img 
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto max-h-[80vh] object-contain"
+                className="w-full h-auto max-h-[90vh] object-contain"
                 data-testid="modal-image"
               />
+              
+              {/* Previous button */}
+              <button
+                onClick={goToPrevious}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-2 rounded-full transition-all duration-200"
+                data-testid="modal-previous"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              
+              {/* Next button */}
+              <button
+                onClick={goToNext}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-2 rounded-full transition-all duration-200"
+                data-testid="modal-next"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-2 rounded-full transition-all duration-200"
+                data-testid="modal-close"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              {/* Photo counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded-full text-sm">
+                {galleryImages.findIndex(img => img.id === selectedImage.id) + 1} of {galleryImages.length}
+              </div>
             </div>
           )}
         </DialogContent>
