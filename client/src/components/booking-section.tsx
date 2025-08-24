@@ -44,7 +44,7 @@ const roomOptions = [
     maxGuests: 4,
     pricePerNight: 90,
     image: bunkBedroomDSC8843,
-    features: ["2 Bunk Beds", "Shared Bathroom", "Family Friendly"]
+    features: ["1 Bunk Bed", "Shared Bathroom", "Family Friendly"]
   },
   {
     id: "whole-house",
