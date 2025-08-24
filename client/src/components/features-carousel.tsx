@@ -30,6 +30,30 @@ const carouselFeatures = [
     emoji: "🚊",
     title: "Connected Location",
     description: "35 min from Budapest"
+  },
+  {
+    id: 6,
+    emoji: "🏨",
+    title: "Flexible Booking",
+    description: "Possible to book only 1 room"
+  },
+  {
+    id: 7,
+    emoji: "📶",
+    title: "High-Speed Wifi",
+    description: "Fast internet connection"
+  },
+  {
+    id: 8,
+    emoji: "💻",
+    title: "Dedicated Workspace",
+    description: "Perfect for remote work"
+  },
+  {
+    id: 9,
+    emoji: "❄️",
+    title: "Air Conditioning",
+    description: "Stay cool and comfortable"
   }
 ];
 
