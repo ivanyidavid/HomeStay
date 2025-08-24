@@ -15,6 +15,7 @@ import type { Booking } from "@shared/schema";
 // Import room photos
 import bedroom1IMG9992 from "@assets/photos/bedroom1-IMG_9992-HDR.jpg";
 import bedroom2DSC8860 from "@assets/photos/bedroom2-DSC_8860-HDR.jpg";
+import bedroom2DSC8870 from "@assets/photos/bedroom2-DSC_8870.jpg";
 import bunkBedroomDSC8843 from "@assets/photos/bunk bedroom-DSC_8843.jpg";
 import commonRoomIMG0083 from "@assets/photos/common room-IMG_0083-HDR.jpg";
 
@@ -34,7 +35,7 @@ const roomOptions = [
     description: "Cozy room with a comfortable double bed",
     maxGuests: 2,
     pricePerNight: 100,
-    image: bedroom2DSC8860,
+    image: bedroom2DSC8870,
     features: ["1 Double Bed", "Private Bathroom", "Hill Views"]
   },
   {
