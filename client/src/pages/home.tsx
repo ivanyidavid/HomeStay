@@ -13,11 +13,11 @@ export default function Home() {
     <div className="font-inter bg-white">
       <Navigation />
       <HeroSection />
-      <AmenitiesSection />
       <FeaturesSection />
       <TestimonialsSection />
       <FeaturesCarousel />
       <GallerySection />
+      <AmenitiesSection />
       <BookingSection />
       <Footer />
     </div>
