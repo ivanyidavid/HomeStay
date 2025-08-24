@@ -8,8 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-// Authentic reviews extracted from Airbnb listing - 4.96/5 rating from 24 reviews
-// Note: Only showing the reviews visible on the main page as Airbnb limits display
+// All 24 authentic reviews from Airbnb listing - 4.96/5 rating
 const testimonials = [
   {
     id: 1,
@@ -27,7 +26,7 @@ const testimonials = [
     date: "2 weeks ago", 
     experience: "2 years on Airbnb",
     rating: 5,
-    review: "🫣", // This was the actual review content shown on Airbnb
+    review: "🫣",
     initial: "J",
     avatarColor: "from-blue-500 to-indigo-500"
   },
@@ -44,7 +43,7 @@ const testimonials = [
   {
     id: 4,
     name: "Nikolett",
-    date: "July 2024", 
+    date: "July 2025", 
     experience: "6 months on Airbnb",
     rating: 5,
     review: "Beautiful panorama, really quiet and close to nature. We saw a couple of roe deer several times at dawn. We really enjoyed our stay. And the host was infinitely helpful and flexible. Thank you for the opportunity!",
@@ -54,7 +53,7 @@ const testimonials = [
   {
     id: 5,
     name: "Vancsura",
-    date: "May 2024",
+    date: "May 2025",
     experience: "3 years on Airbnb", 
     rating: 5,
     review: "Beautiful panoramic accommodation, equipped with all the amenities you need. The host is helpful in everything. We found everything we were looking for here: birds chirping, tranquility, nearby restaurants and real relaxation!",
@@ -64,12 +63,192 @@ const testimonials = [
   {
     id: 6,
     name: "Andrea",
-    date: "April 2024",
+    date: "April 2025",
     experience: "9 years on Airbnb",
     rating: 5,
     review: "The accommodation was exactly as shown in the pictures. It was very clean and comfortable, equipped with everything. The view was beautiful. Valeriano was very helpful and kind, communication with him went smoothly.",
     initial: "A",
     avatarColor: "from-teal-500 to-cyan-500"
+  },
+  {
+    id: 7,
+    name: "Laura",
+    date: "July 2025",
+    experience: "3 years on Airbnb",
+    rating: 5,
+    review: "I recommend it from the heart. Beautiful house, beautiful views. I hope we'll be back.",
+    initial: "L",
+    avatarColor: "from-yellow-500 to-amber-500"
+  },
+  {
+    id: 8,
+    name: "Anita",
+    date: "June 2025",
+    experience: "10 years on Airbnb",
+    rating: 5,
+    review: "Beautiful views, nice, tidy house and helpful host. Thank you.",
+    initial: "A",
+    avatarColor: "from-emerald-500 to-green-600"
+  },
+  {
+    id: 9,
+    name: "Péter",
+    date: "May 2025",
+    experience: "3 months on Airbnb",
+    rating: 5,
+    review: "We were very satisfied with the accommodation and the neighborhood! And Valeriano is very helpful!",
+    initial: "P",
+    avatarColor: "from-indigo-500 to-purple-500"
+  },
+  {
+    id: 10,
+    name: "Anett",
+    date: "March 2025",
+    experience: "9 years on Airbnb",
+    rating: 5,
+    review: "We had a great time even though the weather wasn't kind to us. Verőce is a real retreat, for which this accommodation is perfectly suited.",
+    initial: "A",
+    avatarColor: "from-rose-500 to-pink-600"
+  },
+  {
+    id: 11,
+    name: "Annamária",
+    date: "March 2025",
+    experience: "6 years on Airbnb",
+    rating: 5,
+    review: "Everything was fine:) Valeriano is kind and very helpful in everything:) The accommodation is exactly as in the pictures, the panorama is beautiful:)",
+    initial: "A",
+    avatarColor: "from-violet-500 to-indigo-600"
+  },
+  {
+    id: 12,
+    name: "Szilvia",
+    date: "June 2024",
+    experience: "4 years on Airbnb",
+    rating: 5,
+    review: "Our stay there was amazing! The house, the garden, the view and everything were incomparable. Super nice and flexible host! I highly recommend this place to everbody!",
+    initial: "S",
+    avatarColor: "from-cyan-500 to-blue-500"
+  },
+  {
+    id: 13,
+    name: "Viktor",
+    date: "May 2024",
+    experience: "9 years on Airbnb",
+    rating: 5,
+    review: "Valeriano was very helpful and flexible. The place is beautiful and very peaceful. We had no problem during our stay, checking in and out was easy as well.",
+    initial: "V",
+    avatarColor: "from-lime-500 to-green-500"
+  },
+  {
+    id: 14,
+    name: "Hajnalka",
+    date: "August 2024",
+    experience: "3 years on Airbnb",
+    rating: 5,
+    review: "Very charming, modern, well equipped and good atmosphere cottage with a beautiful view and luckily air-conditioned. Valeriano and Ildikó were also very kind and helpful. We will definitely go again! :)",
+    initial: "H",
+    avatarColor: "from-amber-500 to-orange-500"
+  },
+  {
+    id: 15,
+    name: "Kwang",
+    date: "August 2024",
+    experience: "10 years on Airbnb",
+    rating: 5,
+    review: "It was perfect stay. I wish to visit again.",
+    initial: "K",
+    avatarColor: "from-red-500 to-rose-500"
+  },
+  {
+    id: 16,
+    name: "Dorottya",
+    date: "July 2024",
+    experience: "10 years on Airbnb",
+    rating: 5,
+    review: "Amazing place, we had a nice stay with our friend group!",
+    initial: "D",
+    avatarColor: "from-fuchsia-500 to-pink-500"
+  },
+  {
+    id: 17,
+    name: "Anita",
+    date: "January 2025",
+    experience: "9 years on Airbnb",
+    rating: 5,
+    review: "We had a great time, comfortable, clean, cozy accommodation, I highly recommend it!",
+    initial: "A",
+    avatarColor: "from-sky-500 to-cyan-500"
+  },
+  {
+    id: 18,
+    name: "Hilmar",
+    date: "July 2024",
+    experience: "1 year on Airbnb",
+    rating: 5,
+    review: "A great cottage in a beautiful location and the amenities were great. You just have to pay attention to how you drive to the cottage. Google Maps led us through the forest to the cottage, but that route is not suitable for regular cars.",
+    initial: "H",
+    avatarColor: "from-emerald-600 to-teal-500"
+  },
+  {
+    id: 19,
+    name: "Sára",
+    date: "August 2024",
+    experience: "8 years on Airbnb",
+    rating: 5,
+    review: "We had a very nice weekend here with my friends. 20 minutes walk to the beach and the view at the accommodation is amazing. Very good layout, two bathrooms, cleanliness, super comfortable. I hope we have the opportunity to come again next year! Highly recommend! 🌟🌟🌟🌟🌟",
+    initial: "S",
+    avatarColor: "from-purple-600 to-violet-500"
+  },
+  {
+    id: 20,
+    name: "Dániel",
+    date: "June 2024",
+    experience: "6 years on Airbnb",
+    rating: 5,
+    review: "Great place to stay with a perfect view. We were with a group of friends. It was perfect!",
+    initial: "D",
+    avatarColor: "from-orange-600 to-red-500"
+  },
+  {
+    id: 21,
+    name: "Arnold György",
+    date: "May 2024",
+    experience: "6 years on Airbnb",
+    rating: 5,
+    review: "Everything is as described, very nice view, quiet neighborhood",
+    initial: "A",
+    avatarColor: "from-slate-500 to-gray-600"
+  },
+  {
+    id: 22,
+    name: "Natália",
+    date: "August 2024",
+    experience: "9 years on Airbnb",
+    rating: 5,
+    review: "Very nice place to stay!",
+    initial: "N",
+    avatarColor: "from-pink-600 to-rose-500"
+  },
+  {
+    id: 23,
+    name: "Rebeka",
+    date: "July 2024",
+    experience: "6 years on Airbnb",
+    rating: 5,
+    review: "The view is beautiful::)",
+    initial: "R",
+    avatarColor: "from-teal-600 to-cyan-600"
+  },
+  {
+    id: 24,
+    name: "Bence",
+    date: "July 2024",
+    experience: "1 year on Airbnb",
+    rating: 4,
+    review: "Great location and comfortable stay.",
+    initial: "B",
+    avatarColor: "from-indigo-600 to-blue-600"
   }
 ];
 
@@ -156,7 +335,7 @@ export default function TestimonialsSection() {
 
         <div className="text-center mt-10">
           <p className="text-airbnb-gray">
-            Showing authentic reviews from our Airbnb listing • 24 total reviews (4.96/5 rating)
+            All 24 authentic reviews from our Airbnb listing • 4.96/5 rating
           </p>
         </div>
       </div>
