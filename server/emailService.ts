@@ -108,7 +108,7 @@ Please contact the guest to confirm their booking and arrange payment details.
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: 'ivanyi.david96@gmail.com',
+        to: 'valeriano.donzelli@gmail.com',
         subject: `🏠 New Booking: ${booking.guestName} - ${roomName}`,
         text: emailContent,
         html: emailContent.replace(/\n/g, '<br>').replace(/━/g, '─')
