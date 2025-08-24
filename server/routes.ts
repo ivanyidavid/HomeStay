@@ -40,15 +40,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertBookingSchema.parse(req.body);
       
-      // Check for date conflicts
+      // Check for date conflicts based on room type
       const conflictingBookings = await storage.getBookingsByDateRange(
         validatedData.checkIn,
         validatedData.checkOut
       );
       
-      if (conflictingBookings.length > 0) {
+      // Check if there are conflicts for the specific room type or whole house bookings
+      const hasConflict = conflictingBookings.some(booking => 
+        booking.roomType === validatedData.roomType || 
+        booking.roomType === "whole-house" || 
+        validatedData.roomType === "whole-house"
+      );
+      
+      if (hasConflict) {
         res.status(409).json({ 
-          message: "The selected dates are not available. Please choose different dates." 
+          message: "The selected room/dates are not available. Please choose different dates or room type." 
         });
         return;
       }

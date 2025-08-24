@@ -30,6 +30,7 @@ export class MemStorage implements IStorage {
       checkIn: "2024-08-25",
       checkOut: "2024-08-27",
       guests: 4,
+      roomType: "double-bed",
       guestName: "Demo Booking",
       guestEmail: "demo@example.com",
       guestPhone: "",
@@ -43,6 +44,7 @@ export class MemStorage implements IStorage {
       checkIn: "2024-09-07",
       checkOut: "2024-09-08",
       guests: 2,
+      roomType: "single-bed",
       guestName: "Demo Booking 2",
       guestEmail: "demo2@example.com",
       guestPhone: "",
@@ -85,6 +87,7 @@ export class MemStorage implements IStorage {
     const booking: Booking = {
       ...insertBooking,
       id,
+      guestPhone: insertBooking.guestPhone || null,
       status: "pending",
       confirmed: false,
     };

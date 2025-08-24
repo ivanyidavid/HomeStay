@@ -14,6 +14,7 @@ export const bookings = pgTable("bookings", {
   checkIn: date("check_in").notNull(),
   checkOut: date("check_out").notNull(),
   guests: integer("guests").notNull(),
+  roomType: text("room_type").notNull(), // single-bed, double-bed, bunk-bed, whole-house
   guestName: text("guest_name").notNull(),
   guestEmail: text("guest_email").notNull(),
   guestPhone: text("guest_phone"),
@@ -35,6 +36,7 @@ export const insertBookingSchema = createInsertSchema(bookings).omit({
   checkIn: z.string(),
   checkOut: z.string(),
   guests: z.number().min(1).max(11),
+  roomType: z.enum(["single-bed", "double-bed", "bunk-bed", "whole-house"]),
   guestName: z.string().min(1),
   guestEmail: z.string().email(),
   guestPhone: z.string().optional(),
