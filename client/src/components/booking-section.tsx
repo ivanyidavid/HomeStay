@@ -357,7 +357,7 @@ export default function BookingSection() {
                     disabled={createBookingMutation.isPending}
                     data-testid="button-submit-booking"
                   >
-                    {createBookingMutation.isPending ? "Processing..." : "Check Availability"}
+                    {createBookingMutation.isPending ? "Processing..." : "Book Now"}
                   </Button>
                 </div>
                 
