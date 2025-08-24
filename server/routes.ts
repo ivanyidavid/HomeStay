@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertBookingSchema } from "@shared/schema";
 import { z } from "zod";
+import { googleSheetsService } from "./googleSheets";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all bookings
@@ -35,6 +36,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get availability from Google Sheets
+  app.get("/api/availability", async (req, res) => {
+    try {
+      const availability = await googleSheetsService.getBlockedDatesForAllRooms();
+      res.json(availability);
+    } catch (error) {
+      console.error('Error fetching availability:', error);
+      res.status(500).json({ message: "Failed to fetch availability from Google Sheets" });
+    }
+  });
+
+  // Get availability for specific room type
+  app.get("/api/availability/:roomType", async (req, res) => {
+    try {
+      const { roomType } = req.params;
+      const blockedDates = await googleSheetsService.getBlockedDatesForRoom(decodeURIComponent(roomType));
+      res.json({ roomType, blockedDates });
+    } catch (error) {
+      console.error('Error fetching room availability:', error);
+      res.status(500).json({ message: "Failed to fetch room availability" });
+    }
+  });
+
   // Create a new booking
   app.post("/api/bookings", async (req, res) => {
     try {
@@ -58,6 +82,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "The selected room/dates are not available. Please choose different dates or room type." 
         });
         return;
+      }
+      
+      // Check Google Sheets for blocked dates
+      try {
+        const roomTypeMap: { [key: string]: string } = {
+          "single-bed": "2x Single Bed Bedroom",
+          "double-bed": "Double Bed Bedroom", 
+          "bunk-bed": "Bunk Bed Bedroom",
+          "whole-house": "Whole House"
+        };
+        
+        const sheetRoomType = roomTypeMap[validatedData.roomType];
+        if (sheetRoomType) {
+          const blockedDates = await googleSheetsService.getBlockedDatesForRoom(sheetRoomType);
+          
+          // Check if any requested dates are blocked
+          const checkInDate = new Date(validatedData.checkIn);
+          const checkOutDate = new Date(validatedData.checkOut);
+          
+          const requestedDates = [];
+          for (let date = new Date(checkInDate); date < checkOutDate; date.setDate(date.getDate() + 1)) {
+            requestedDates.push(date.toISOString().split('T')[0]);
+          }
+          
+          const hasBlockedDate = requestedDates.some(date => blockedDates.includes(date));
+          
+          if (hasBlockedDate) {
+            res.status(409).json({ 
+              message: "The selected dates are blocked for this room type. Please choose different dates." 
+            });
+            return;
+          }
+        }
+      } catch (error) {
+        console.error('Error checking Google Sheets availability:', error);
+        // Continue with booking if Google Sheets check fails
       }
       
       // Validate check-in is before check-out

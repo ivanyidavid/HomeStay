@@ -74,9 +74,15 @@ export default function BookingSection() {
   const { data: bookings = [] } = useQuery<Booking[]>({
     queryKey: ["/api/bookings"],
   });
+  
+  // Fetch Google Sheets availability data
+  const { data: sheetsAvailability = {} } = useQuery<{ [key: string]: string[] }>({
+    queryKey: ["/api/availability"],
+    refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
+  });
 
   // Get unavailable dates from existing bookings for selected room type
-  const unavailableDates = bookings
+  const bookingUnavailableDates = bookings
     .filter(booking => booking.roomType === selectedRoom || booking.roomType === "whole-house" || selectedRoom === "whole-house")
     .flatMap((booking) => {
       const start = parseISO(booking.checkIn);
@@ -89,6 +95,27 @@ export default function BookingSection() {
       
       return dates;
     });
+    
+  // Get blocked dates from Google Sheets for selected room type
+  const roomTypeMap: { [key: string]: string } = {
+    "single-bed": "2x Single Bed Bedroom",
+    "double-bed": "Double Bed Bedroom", 
+    "bunk-bed": "Bunk Bed Bedroom",
+    "whole-house": "Whole House"
+  };
+  
+  const currentRoomSheetName = roomTypeMap[selectedRoom];
+  const sheetsBlockedDates = currentRoomSheetName && sheetsAvailability[currentRoomSheetName] 
+    ? sheetsAvailability[currentRoomSheetName].map(dateStr => new Date(dateStr))
+    : [];
+    
+  // Also check if "Whole House" is blocked when booking individual rooms
+  const wholeHouseBlockedDates = selectedRoom !== "whole-house" && sheetsAvailability["Whole House"]
+    ? sheetsAvailability["Whole House"].map(dateStr => new Date(dateStr))
+    : [];
+    
+  // Combine all unavailable dates
+  const unavailableDates = [...bookingUnavailableDates, ...sheetsBlockedDates, ...wholeHouseBlockedDates];
 
   const createBookingMutation = useMutation({
     mutationFn: async (bookingData: any) => {
