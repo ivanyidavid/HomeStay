@@ -78,7 +78,7 @@ export default function BookingSection() {
   // Fetch Google Sheets availability data
   const { data: sheetsAvailability = {} } = useQuery<{ [key: string]: string[] }>({
     queryKey: ["/api/availability"],
-    refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
+    refetchInterval: 1 * 60 * 1000, // Refetch every 1 minute
   });
 
   // Get unavailable dates from existing bookings for selected room type
