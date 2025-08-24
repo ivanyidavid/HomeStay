@@ -10,7 +10,12 @@ import {
   Car, 
   Key
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const amenityCategories = [
   {
@@ -110,40 +115,44 @@ export default function AmenitiesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {amenityCategories.map((category, index) => {
-            const IconComponent = category.icon;
-            return (
-              <Card 
-                key={index} 
-                className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
-                data-testid={`amenity-category-${index}`}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-airbnb-red to-pink-500 rounded-full flex items-center justify-center mr-4">
-                      <IconComponent className="w-6 h-6 text-white" />
+        <div className="max-w-4xl mx-auto">
+          <Accordion type="multiple" className="w-full space-y-4">
+            {amenityCategories.map((category, index) => {
+              const IconComponent = category.icon;
+              return (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="bg-white rounded-xl shadow-md border border-gray-100"
+                  data-testid={`amenity-category-${index}`}
+                >
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 bg-gradient-to-br from-airbnb-red to-pink-500 rounded-full flex items-center justify-center mr-4">
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-airbnb-dark text-left">
+                        {category.title}
+                      </h3>
                     </div>
-                    <h3 className="text-xl font-semibold text-airbnb-dark">
-                      {category.title}
-                    </h3>
-                  </div>
-                  
-                  <ul className="space-y-2">
-                    {category.items.map((item, itemIndex) => (
-                      <li 
-                        key={itemIndex} 
-                        className="text-airbnb-gray flex items-start"
-                      >
-                        <span className="w-2 h-2 bg-airbnb-red rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span className="text-sm leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            );
-          })}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <ul className="space-y-3 mt-4">
+                      {category.items.map((item, itemIndex) => (
+                        <li 
+                          key={itemIndex} 
+                          className="text-airbnb-gray flex items-start"
+                        >
+                          <span className="w-2 h-2 bg-airbnb-red rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="text-sm leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
         </div>
 
         <div className="mt-12 text-center">
