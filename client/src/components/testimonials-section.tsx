@@ -8,7 +8,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-// All authentic reviews from Airbnb listing - 4.96/5 rating from 24 reviews
+// Authentic reviews extracted from Airbnb listing - 4.96/5 rating from 24 reviews
+// Note: Only showing the reviews visible on the main page as Airbnb limits display
 const testimonials = [
   {
     id: 1,
@@ -26,7 +27,7 @@ const testimonials = [
     date: "2 weeks ago", 
     experience: "2 years on Airbnb",
     rating: 5,
-    review: "Outstanding stay! Everything was perfect from start to finish. The property exceeded our expectations.",
+    review: "🫣", // This was the actual review content shown on Airbnb
     initial: "J",
     avatarColor: "from-blue-500 to-indigo-500"
   },
@@ -69,66 +70,6 @@ const testimonials = [
     review: "The accommodation was exactly as shown in the pictures. It was very clean and comfortable, equipped with everything. The view was beautiful. Valeriano was very helpful and kind, communication with him went smoothly.",
     initial: "A",
     avatarColor: "from-teal-500 to-cyan-500"
-  },
-  {
-    id: 7,
-    name: "Tamás",
-    date: "March 2024",
-    experience: "4 years on Airbnb",
-    rating: 5,
-    review: "Perfect location for a group retreat. The house is spacious, clean, and the views are absolutely incredible. Highly recommend!",
-    initial: "T",
-    avatarColor: "from-yellow-500 to-amber-500"
-  },
-  {
-    id: 8,
-    name: "Petra",
-    date: "February 2024",
-    experience: "5 years on Airbnb",
-    rating: 5,
-    review: "Such a peaceful and beautiful place. The kitchen is well-equipped and the bedrooms are comfortable. Great communication with the host.",
-    initial: "P",
-    avatarColor: "from-pink-600 to-rose-600"
-  },
-  {
-    id: 9,
-    name: "László",
-    date: "January 2024",
-    experience: "2 years on Airbnb",
-    rating: 5,
-    review: "Amazing property with stunning panoramic views. Perfect for our company retreat. Everything was exactly as described.",
-    initial: "L",
-    avatarColor: "from-indigo-500 to-blue-500"
-  },
-  {
-    id: 10,
-    name: "Zsófia",
-    date: "December 2023",
-    experience: "6 years on Airbnb",
-    rating: 5,
-    review: "Wonderful stay! The house is beautifully maintained and the location is perfect for exploring the hills. Host was very responsive.",
-    initial: "Z",
-    avatarColor: "from-emerald-500 to-green-500"
-  },
-  {
-    id: 11,
-    name: "Máté",
-    date: "November 2023",
-    experience: "3 years on Airbnb",
-    rating: 5,
-    review: "Great place for a group getaway. Clean, spacious, and the panoramic views from the terrace are breathtaking.",
-    initial: "M",
-    avatarColor: "from-violet-500 to-purple-500"
-  },
-  {
-    id: 12,
-    name: "Eszter",
-    date: "October 2023",
-    experience: "8 years on Airbnb",
-    rating: 5,
-    review: "Perfect property for our team retreat. Everything we needed was provided and the host was incredibly helpful throughout our stay.",
-    initial: "E",
-    avatarColor: "from-red-500 to-orange-500"
   }
 ];
 
@@ -215,7 +156,7 @@ export default function TestimonialsSection() {
 
         <div className="text-center mt-10">
           <p className="text-airbnb-gray">
-            Swipe through all our amazing guest reviews • 24 total reviews on Airbnb
+            Showing authentic reviews from our Airbnb listing • 24 total reviews (4.96/5 rating)
           </p>
         </div>
       </div>
