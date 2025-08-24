@@ -69,20 +69,20 @@ export default function FeaturesSection() {
             Why Choose Our Guest House
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12">
             {features.slice(0, 3).map((feature) => (
               <Card key={feature.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <img 
                   src={feature.image}
                   alt={feature.alt}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-64 object-cover"
                   data-testid={`feature-image-${feature.id}`}
                 />
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-airbnb-dark mb-3">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-semibold text-airbnb-dark mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-airbnb-gray">
+                  <p className="text-lg text-airbnb-gray">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -95,20 +95,20 @@ export default function FeaturesSection() {
       {/* Second section with features 4-6 */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12">
             {features.slice(3, 6).map((feature) => (
               <Card key={feature.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                 <img 
                   src={feature.image}
                   alt={feature.alt}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-64 object-cover"
                   data-testid={`feature-image-${feature.id}`}
                 />
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-airbnb-dark mb-3">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-semibold text-airbnb-dark mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-airbnb-gray">
+                  <p className="text-lg text-airbnb-gray">
                     {feature.description}
                   </p>
                 </CardContent>
