@@ -176,11 +176,6 @@ export default function GallerySection() {
                       className="w-full h-full object-cover"
                     />
                   </button>
-                  <div className="mt-3 text-center">
-                    <h3 className="text-sm font-medium text-airbnb-dark truncate">
-                      {image.title}
-                    </h3>
-                  </div>
                 </div>
               </CarouselItem>
             ))}
@@ -207,9 +202,6 @@ export default function GallerySection() {
                 className="w-full h-auto max-h-[80vh] object-contain"
                 data-testid="modal-image"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
-                <h3 className="text-lg font-semibold">{selectedImage.title}</h3>
-              </div>
             </div>
           )}
         </DialogContent>
