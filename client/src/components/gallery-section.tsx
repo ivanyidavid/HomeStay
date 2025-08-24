@@ -28,7 +28,6 @@ import bunkBedroomDSC8848 from "@assets/photos/bunk bedroom-DSC_8848.jpg";
 import bunkBedroomDSC8850 from "@assets/photos/bunk bedroom-DSC_8850.jpg";
 import bunkBedroomIMG0001 from "@assets/photos/bunk bedroom-IMG_0001-HDR.jpg";
 import bunkBedroomIMG0015 from "@assets/photos/bunk bedroom-IMG_0015.jpg";
-import commonRoomDSC8941 from "@assets/photos/common room-DSC_8941.jpg";
 import img5816 from "@assets/photos/IMG_5816.jpg";
 import commonRoomDSC8961 from "@assets/photos/common room-DSC_8961.jpg";
 import commonRoomIMG0068 from "@assets/photos/common room-IMG_0068-HDR.jpg";
@@ -95,54 +94,53 @@ const galleryImages = [
   { id: 18, src: bunkBedroomIMG0015, alt: "Bunk bedroom detail", title: "Bunk Bedroom - IMG_0015" },
   
   // Common Room
-  { id: 19, src: commonRoomDSC8941, alt: "Living room", title: "Common Room - DSC_8941" },
-  { id: 20, src: img5816, alt: "Living room view", title: "Living Room - IMG_5816" },
-  { id: 21, src: commonRoomDSC8961, alt: "Living room space", title: "Common Room - DSC_8961" },
-  { id: 22, src: commonRoomIMG0068, alt: "Living room HDR", title: "Common Room - IMG_0068-HDR" },
-  { id: 23, src: commonRoomIMG0083, alt: "Living room main", title: "Common Room - IMG_0083-HDR" },
+  { id: 19, src: img5816, alt: "Living room view", title: "Living Room - IMG_5816" },
+  { id: 20, src: commonRoomDSC8961, alt: "Living room space", title: "Common Room - DSC_8961" },
+  { id: 21, src: commonRoomIMG0068, alt: "Living room HDR", title: "Common Room - IMG_0068-HDR" },
+  { id: 22, src: commonRoomIMG0083, alt: "Living room main", title: "Common Room - IMG_0083-HDR" },
   
   // Kitchen
-  { id: 24, src: kitchenDSC8902, alt: "Kitchen area", title: "Kitchen - DSC_8902" },
-  { id: 25, src: kitchenDSC8914, alt: "Kitchen view", title: "Kitchen - DSC_8914" },
-  { id: 26, src: kitchenDSC8917, alt: "Kitchen main", title: "Kitchen - DSC_8917-HDR" },
-  { id: 27, src: kitchenDSC8923, alt: "Kitchen detail", title: "Kitchen - DSC_8923" },
-  { id: 28, src: kitchenDSC8930, alt: "Kitchen HDR", title: "Kitchen - DSC_8930-HDR" },
-  { id: 29, src: kitchenDSC8933, alt: "Kitchen space", title: "Kitchen - DSC_8933-HDR" },
-  { id: 30, src: kitchenIMG0048, alt: "Kitchen angle", title: "Kitchen - IMG_0048-HDR" },
-  { id: 31, src: kitchenIMG0061, alt: "Kitchen view", title: "Kitchen - IMG_0061" },
-  { id: 32, src: kitchenIMG0062, alt: "Kitchen detail", title: "Kitchen - IMG_0062" },
-  { id: 33, src: kitchenIMG0064, alt: "Kitchen space", title: "Kitchen - IMG_0064" },
-  { id: 34, src: kitchenIMG0066, alt: "Kitchen area", title: "Kitchen - IMG_0066" },
+  { id: 23, src: kitchenDSC8902, alt: "Kitchen area", title: "Kitchen - DSC_8902" },
+  { id: 24, src: kitchenDSC8914, alt: "Kitchen view", title: "Kitchen - DSC_8914" },
+  { id: 25, src: kitchenDSC8917, alt: "Kitchen main", title: "Kitchen - DSC_8917-HDR" },
+  { id: 26, src: kitchenDSC8923, alt: "Kitchen detail", title: "Kitchen - DSC_8923" },
+  { id: 27, src: kitchenDSC8930, alt: "Kitchen HDR", title: "Kitchen - DSC_8930-HDR" },
+  { id: 28, src: kitchenDSC8933, alt: "Kitchen space", title: "Kitchen - DSC_8933-HDR" },
+  { id: 29, src: kitchenIMG0048, alt: "Kitchen angle", title: "Kitchen - IMG_0048-HDR" },
+  { id: 30, src: kitchenIMG0061, alt: "Kitchen view", title: "Kitchen - IMG_0061" },
+  { id: 31, src: kitchenIMG0062, alt: "Kitchen detail", title: "Kitchen - IMG_0062" },
+  { id: 32, src: kitchenIMG0064, alt: "Kitchen space", title: "Kitchen - IMG_0064" },
+  { id: 33, src: kitchenIMG0066, alt: "Kitchen area", title: "Kitchen - IMG_0066" },
   
   // Outside Views
-  { id: 35, src: outsideDSC8970, alt: "Exterior view", title: "Outside - DSC_8970" },
-  { id: 36, src: outsideDSC8972, alt: "Exterior area", title: "Outside - DSC_8972" },
-  { id: 37, src: outsideDSC8974, alt: "Exterior space", title: "Outside - DSC_8974" },
-  { id: 38, src: outsideDSC8978, alt: "Exterior detail", title: "Outside - DSC_8978" },
-  { id: 39, src: outsideDSC8981, alt: "Exterior view", title: "Outside - DSC_8981" },
-  { id: 40, src: outsideDSC8985, alt: "Exterior panorama", title: "Outside - DSC_8985" },
-  { id: 41, src: outsideIMG0117, alt: "Exterior main", title: "Outside - IMG_0117" },
-  { id: 42, src: outsideIMG0118, alt: "Exterior angle", title: "Outside - IMG_0118" },
+  { id: 34, src: outsideDSC8970, alt: "Exterior view", title: "Outside - DSC_8970" },
+  { id: 35, src: outsideDSC8972, alt: "Exterior area", title: "Outside - DSC_8972" },
+  { id: 36, src: outsideDSC8974, alt: "Exterior space", title: "Outside - DSC_8974" },
+  { id: 37, src: outsideDSC8978, alt: "Exterior detail", title: "Outside - DSC_8978" },
+  { id: 38, src: outsideDSC8981, alt: "Exterior view", title: "Outside - DSC_8981" },
+  { id: 39, src: outsideDSC8985, alt: "Exterior panorama", title: "Outside - DSC_8985" },
+  { id: 40, src: outsideIMG0117, alt: "Exterior main", title: "Outside - IMG_0117" },
+  { id: 41, src: outsideIMG0118, alt: "Exterior angle", title: "Outside - IMG_0118" },
   
   // Additional Photos (converted from HEIC)
-  { id: 43, src: img5538, alt: "House view", title: "House View - IMG_5538" },
-  { id: 44, src: img9806, alt: "Property view", title: "Property View - IMG_9806" },
-  { id: 45, src: img6039, alt: "Panoramic hills view", title: "Panoramic View - IMG_6039" },
+  { id: 42, src: img5538, alt: "House view", title: "House View - IMG_5538" },
+  { id: 43, src: img9806, alt: "Property view", title: "Property View - IMG_9806" },
+  { id: 44, src: img6039, alt: "Panoramic hills view", title: "Panoramic View - IMG_6039" },
   
   // Stairs
-  { id: 46, src: stairsIMG9969, alt: "Interior stairs", title: "Stairs - IMG_9969" },
+  { id: 45, src: stairsIMG9969, alt: "Interior stairs", title: "Stairs - IMG_9969" },
   
   // Terrace
-  { id: 47, src: terraceDSC8897, alt: "Terrace area", title: "Terrace - DSC_8897" },
-  { id: 48, src: terraceDSC8898, alt: "Terrace space", title: "Terrace - DSC_8898" },
-  { id: 49, src: terraceDSC8899, alt: "Terrace balcony", title: "Terrace - DSC_8899" },
-  { id: 50, src: terraceDSC8967, alt: "Terrace view", title: "Terrace - DSC_8967" },
-  { id: 51, src: terraceDSC8968, alt: "Terrace outdoor", title: "Terrace - DSC_8968" },
-  { id: 52, src: terraceDSC8969, alt: "Terrace balcony", title: "Terrace - DSC_8969" },
-  { id: 53, src: terraceIMG0030, alt: "Terrace seating", title: "Terrace - IMG_0030" },
-  { id: 54, src: terraceIMG0104, alt: "Terrace space", title: "Terrace - IMG_0104" },
-  { id: 55, src: terraceIMG0106, alt: "Terrace panoramic", title: "Terrace - IMG_0106" },
-  { id: 56, src: terraceIMG0113, alt: "Terrace area", title: "Terrace - IMG_0113" }
+  { id: 46, src: terraceDSC8897, alt: "Terrace area", title: "Terrace - DSC_8897" },
+  { id: 47, src: terraceDSC8898, alt: "Terrace space", title: "Terrace - DSC_8898" },
+  { id: 48, src: terraceDSC8899, alt: "Terrace balcony", title: "Terrace - DSC_8899" },
+  { id: 49, src: terraceDSC8967, alt: "Terrace view", title: "Terrace - DSC_8967" },
+  { id: 50, src: terraceDSC8968, alt: "Terrace outdoor", title: "Terrace - DSC_8968" },
+  { id: 51, src: terraceDSC8969, alt: "Terrace balcony", title: "Terrace - DSC_8969" },
+  { id: 52, src: terraceIMG0030, alt: "Terrace seating", title: "Terrace - IMG_0030" },
+  { id: 53, src: terraceIMG0104, alt: "Terrace space", title: "Terrace - IMG_0104" },
+  { id: 54, src: terraceIMG0106, alt: "Terrace panoramic", title: "Terrace - IMG_0106" },
+  { id: 55, src: terraceIMG0113, alt: "Terrace area", title: "Terrace - IMG_0113" }
 ];
 
 export default function GallerySection() {
