@@ -29,7 +29,7 @@ import bunkBedroomDSC8850 from "@assets/photos/bunk bedroom-DSC_8850.jpg";
 import bunkBedroomIMG0001 from "@assets/photos/bunk bedroom-IMG_0001-HDR.jpg";
 import bunkBedroomIMG0015 from "@assets/photos/bunk bedroom-IMG_0015.jpg";
 import commonRoomDSC8941 from "@assets/photos/common room-DSC_8941.jpg";
-import commonRoomDSC8954 from "@assets/photos/common room-DSC_8954.jpg";
+import img5816 from "@assets/photos/IMG_5816.jpg";
 import commonRoomDSC8961 from "@assets/photos/common room-DSC_8961.jpg";
 import commonRoomIMG0068 from "@assets/photos/common room-IMG_0068-HDR.jpg";
 import commonRoomIMG0083 from "@assets/photos/common room-IMG_0083-HDR.jpg";
@@ -96,7 +96,7 @@ const galleryImages = [
   
   // Common Room
   { id: 19, src: commonRoomDSC8941, alt: "Living room", title: "Common Room - DSC_8941" },
-  { id: 20, src: commonRoomDSC8954, alt: "Living room view", title: "Common Room - DSC_8954" },
+  { id: 20, src: img5816, alt: "Living room view", title: "Living Room - IMG_5816" },
   { id: 21, src: commonRoomDSC8961, alt: "Living room space", title: "Common Room - DSC_8961" },
   { id: 22, src: commonRoomIMG0068, alt: "Living room HDR", title: "Common Room - IMG_0068-HDR" },
   { id: 23, src: commonRoomIMG0083, alt: "Living room main", title: "Common Room - IMG_0083-HDR" },
