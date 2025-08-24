@@ -1,6 +1,7 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import TestimonialsSection from "@/components/testimonials-section";
+import AmenitiesSection from "@/components/amenities-section";
 import FeaturesSection from "@/components/features-section";
 import FeaturesCarousel from "@/components/features-carousel";
 import GallerySection from "@/components/gallery-section";
@@ -25,6 +26,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <AmenitiesSection />
       <FeaturesSection />
       <TestimonialsSection />
       <FeaturesCarousel />
