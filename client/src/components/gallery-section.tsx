@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // Import all your uploaded photos
 import bathroomDownstairsDSC8881 from "@assets/photos/bathroom downstairs-DSC_8881.jpg";
@@ -147,21 +154,45 @@ export default function GallerySection() {
           Photo Gallery
         </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {galleryImages.map((image) => (
-            <button
-              key={image.id}
-              onClick={() => setSelectedImage(image)}
-              className="w-full h-48 overflow-hidden rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-airbnb-red"
-              data-testid={`gallery-image-${image.id}`}
-            >
-              <img 
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover"
-              />
-            </button>
-          ))}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {galleryImages.map((image) => (
+              <CarouselItem key={image.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <button
+                    onClick={() => setSelectedImage(image)}
+                    className="w-full h-64 overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-airbnb-red shadow-lg"
+                    data-testid={`gallery-image-${image.id}`}
+                  >
+                    <img 
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                  <div className="mt-3 text-center">
+                    <h3 className="text-sm font-medium text-airbnb-dark truncate">
+                      {image.title}
+                    </h3>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="-left-12" />
+          <CarouselNext className="-right-12" />
+        </Carousel>
+        
+        <div className="text-center mt-8">
+          <p className="text-airbnb-gray">
+            Swipe or use arrows to explore all {galleryImages.length} photos
+          </p>
         </div>
       </div>
 
