@@ -380,10 +380,6 @@ export default function BookingSection() {
                   
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-airbnb-gray">Property:</span>
-                      <span className="text-airbnb-dark font-medium">Verőce Hills Guest House</span>
-                    </div>
-                    <div className="flex justify-between">
                       <span className="text-airbnb-gray">Room Type:</span>
                       <span className="text-airbnb-dark font-medium">{currentRoom.name}</span>
                     </div>
@@ -394,10 +390,6 @@ export default function BookingSection() {
                     <div className="flex justify-between">
                       <span className="text-airbnb-gray">Rate:</span>
                       <span className="text-airbnb-dark font-medium">€{currentRoom.pricePerNight}/night</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-airbnb-gray">Registration:</span>
-                      <span className="text-airbnb-dark font-medium">MA24090618</span>
                     </div>
                     
                     {checkInDate && checkOutDate && (
