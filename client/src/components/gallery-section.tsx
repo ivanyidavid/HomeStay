@@ -142,21 +142,18 @@ export default function GallerySection() {
           <CarouselContent className="-ml-2 md:-ml-4">
             {galleryImages.map((image) => (
               <CarouselItem key={image.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="space-y-2">
-                  <div
-                    className="aspect-[4/3] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg transition-shadow relative"
-                    onClick={() => setSelectedImage(image)}
-                    data-testid={`gallery-image-${image.id}`}
-                  >
-                    <OptimizedImage
-                      imageKey={image.imageKey}
-                      className="w-full h-full"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      objectFit="cover"
-                      priority={image.id <= 6} // Prioritize first 6 images
-                    />
-                  </div>
-                  <p className="text-sm text-gray-600 text-center">{image.title}</p>
+                <div
+                  className="aspect-[4/3] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg transition-shadow relative"
+                  onClick={() => setSelectedImage(image)}
+                  data-testid={`gallery-image-${image.id}`}
+                >
+                  <OptimizedImage
+                    imageKey={image.imageKey}
+                    className="w-full h-full"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    objectFit="cover"
+                    priority={image.id <= 6} // Prioritize first 6 images
+                  />
                 </div>
               </CarouselItem>
             ))}
@@ -165,11 +162,6 @@ export default function GallerySection() {
           <CarouselNext className="hidden md:flex" />
         </Carousel>
         
-        <div className="mt-8 text-center">
-          <p className="text-gray-600">
-            {galleryImages.length} photos of 55 | Swipe or click to view full size
-          </p>
-        </div>
       </div>
 
       {/* Full-size image modal */}
@@ -213,11 +205,8 @@ export default function GallerySection() {
                 />
               </div>
               
-              {/* Image info */}
+              {/* Image counter */}
               <div className="absolute bottom-4 left-4 right-4 text-center">
-                <h3 className="text-white text-lg font-semibold mb-2">
-                  {selectedImage.title}
-                </h3>
                 <p className="text-white/80 text-sm">
                   {galleryImages.findIndex(img => img.id === selectedImage.id) + 1} of {galleryImages.length}
                 </p>
