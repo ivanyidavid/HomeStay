@@ -99,7 +99,7 @@ export default function OptimizedImage({
         height={height}
         onLoad={handleLoad}
         onError={handleError}
-        className="w-full h-full"
+        className={objectFit === 'contain' ? 'max-w-full max-h-full' : 'w-full h-full'}
       />
       
       {/* Loading placeholder */}

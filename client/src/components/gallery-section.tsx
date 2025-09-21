@@ -196,10 +196,11 @@ export default function GallerySection() {
               </button>
               
               {/* Main image */}
-              <div className="w-full h-full flex items-center justify-center">
+              <div className="w-full h-full flex items-center justify-center p-4">
                 <OptimizedImage
                   imageKey={selectedImage.imageKey}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full"
+                  objectFit="contain"
                   sizes="90vw"
                   priority={true}
                 />
