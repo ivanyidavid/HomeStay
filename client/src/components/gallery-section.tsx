@@ -143,15 +143,15 @@ export default function GallerySection() {
             {galleryImages.map((image) => (
               <CarouselItem key={image.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div
-                  className="aspect-[4/3] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg transition-shadow relative"
+                  className="overflow-hidden rounded-lg cursor-pointer hover:shadow-lg transition-shadow relative"
                   onClick={() => setSelectedImage(image)}
                   data-testid={`gallery-image-${image.id}`}
                 >
                   <OptimizedImage
                     imageKey={image.imageKey}
-                    className="w-full h-full"
+                    className="w-full h-auto"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    objectFit="cover"
+                    objectFit="contain"
                     priority={image.id <= 6} // Prioritize first 6 images
                   />
                 </div>
