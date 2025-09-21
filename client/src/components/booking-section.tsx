@@ -78,13 +78,14 @@ export default function BookingSection() {
     refetchInterval: 1 * 60 * 1000, // Refetch every 1 minute
   });
 
-  // Fetch cleaning fee from Google Sheets cell N2
-  const { data: cleaningFeeData } = useQuery<{ cleaningFee: number }>({
+  // Fetch cleaning fees from Google Sheets cells N2 and O2
+  const { data: cleaningFeeData } = useQuery<{ wholeHouseCleaningFee: number; roomCleaningFee: number }>({
     queryKey: ["/api/cleaning-fee"],
     refetchInterval: 1 * 60 * 1000, // Refetch every 1 minute to stay in sync with sheets
   });
 
-  const cleaningFee = cleaningFeeData?.cleaningFee || 0;
+  const wholeHouseCleaningFee = cleaningFeeData?.wholeHouseCleaningFee || 0;
+  const roomCleaningFee = cleaningFeeData?.roomCleaningFee || 0;
 
   // Get unavailable dates from existing bookings for selected room type
   const bookingUnavailableDates = bookings
@@ -184,7 +185,8 @@ export default function BookingSection() {
 
     const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
     const roomCost = nights * currentRoom.pricePerNight;
-    const totalPrice = (roomCost + (selectedRoom === "whole-house" ? cleaningFee : 0)) * 100; // Convert to cents
+    const applicableCleaningFee = selectedRoom === "whole-house" ? wholeHouseCleaningFee : roomCleaningFee;
+    const totalPrice = (roomCost + applicableCleaningFee) * 100; // Convert to cents
 
     createBookingMutation.mutate({
       checkIn: format(checkInDate, "yyyy-MM-dd"),
@@ -215,8 +217,9 @@ export default function BookingSection() {
     : 0;
   
   const roomCost = nights * currentRoom.pricePerNight;
-  const wholeHouseCleaningFee = selectedRoom === "whole-house" ? cleaningFee : 0;
-  const totalPrice = roomCost + wholeHouseCleaningFee;
+  const applicableWholeHouseCleaningFee = selectedRoom === "whole-house" ? wholeHouseCleaningFee : 0;
+  const applicableRoomCleaningFee = selectedRoom !== "whole-house" ? roomCleaningFee : 0;
+  const totalPrice = roomCost + applicableWholeHouseCleaningFee + applicableRoomCleaningFee;
 
   return (
     <section id="booking" className="py-16 bg-airbnb-light">
@@ -414,10 +417,16 @@ export default function BookingSection() {
                           <span className="text-airbnb-gray">Rate:</span>
                           <span className="text-airbnb-dark font-medium">€{currentRoom.pricePerNight} × {nights}</span>
                         </div>
-                        {selectedRoom === "whole-house" && wholeHouseCleaningFee > 0 && (
+                        {selectedRoom === "whole-house" && applicableWholeHouseCleaningFee > 0 && (
                           <div className="flex justify-between">
                             <span className="text-airbnb-gray">Whole house cleaning fee:</span>
-                            <span className="text-airbnb-dark font-medium">€{wholeHouseCleaningFee}</span>
+                            <span className="text-airbnb-dark font-medium">€{applicableWholeHouseCleaningFee}</span>
+                          </div>
+                        )}
+                        {selectedRoom !== "whole-house" && applicableRoomCleaningFee > 0 && (
+                          <div className="flex justify-between">
+                            <span className="text-airbnb-gray">Room cleaning fee:</span>
+                            <span className="text-airbnb-dark font-medium">€{applicableRoomCleaningFee}</span>
                           </div>
                         )}
                       </>

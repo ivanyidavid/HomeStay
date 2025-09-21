@@ -153,6 +153,35 @@ export class GoogleSheetsService {
       return 0;
     }
   }
+
+  async getRoomCleaningFee(): Promise<number> {
+    try {
+      const response = await this.sheets.spreadsheets.values.get({
+        spreadsheetId: SHEET_ID,
+        range: 'O2', // Read the room cleaning fee from cell O2
+      });
+
+      const rows = response.data.values;
+      if (!rows || rows.length === 0 || !rows[0] || !rows[0][0]) {
+        console.log('No room cleaning fee found in cell O2, defaulting to 0');
+        return 0;
+      }
+
+      const feeValue = rows[0][0];
+      const fee = parseFloat(feeValue.toString().replace(/[^\d.-]/g, '')); // Remove any currency symbols
+      
+      if (isNaN(fee)) {
+        console.log(`Invalid room cleaning fee value in O2: ${feeValue}, defaulting to 0`);
+        return 0;
+      }
+
+      console.log(`Loaded room cleaning fee: €${fee}`);
+      return fee;
+    } catch (error) {
+      console.error('Error reading room cleaning fee from Google Sheets:', error);
+      return 0;
+    }
+  }
 }
 
 export const googleSheetsService = new GoogleSheetsService();
