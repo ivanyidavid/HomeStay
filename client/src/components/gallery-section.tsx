@@ -166,9 +166,9 @@ export default function GallerySection() {
 
       {/* Full-size image modal */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-6xl w-full h-[90vh] p-0 overflow-hidden">
+        <DialogContent className="max-w-[95vw] max-h-[95vh] w-auto h-auto p-0 overflow-hidden">
           {selectedImage && (
-            <div className="relative w-full h-full bg-black">
+            <div className="relative bg-black flex items-center justify-center min-h-[50vh] max-h-[95vh]">
               {/* Close button */}
               <button
                 onClick={() => setSelectedImage(null)}
@@ -196,10 +196,10 @@ export default function GallerySection() {
               </button>
               
               {/* Main image */}
-              <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="p-4 flex items-center justify-center w-full h-full">
                 <OptimizedImage
                   imageKey={selectedImage.imageKey}
-                  className="max-w-full max-h-full"
+                  className="max-w-[90vw] max-h-[85vh] w-auto h-auto"
                   objectFit="contain"
                   sizes="90vw"
                   priority={true}
