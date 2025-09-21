@@ -1,6 +1,16 @@
 # Overview
 
-This is a rental house booking website built as a modern, Airbnb-style single-page application. The project showcases a guest house in Verőce Hills, Hungary, featuring comprehensive property information, image galleries, and an integrated booking system. The application uses a full-stack architecture with React frontend, Express backend, and PostgreSQL database to handle property listings and reservation management.
+This is a rental house booking website built as a modern, Airbnb-style single-page application. The project showcases a guest house in Verőce Hills, Hungary, featuring comprehensive property information, image galleries, and an integrated booking system with dynamic pricing. The application uses a full-stack architecture with React frontend, Express backend, and PostgreSQL database to handle property listings and reservation management with Google Sheets integration for real-time pricing and availability updates.
+
+# Recent Changes
+
+## September 21, 2025 - Dynamic Pricing System Implementation
+- ✅ **Complete Photo Optimization**: 57 photos converted to WebP with 60-85% mobile performance improvement
+- ✅ **Whole House Cleaning Fee**: Reads from Google Sheets cell N2 (€40) with real-time updates  
+- ✅ **Room Cleaning Fee**: Reads from Google Sheets cell O2 (€15) for individual room bookings
+- ✅ **Extra Guest Fee System**: Implemented dynamic pricing for Whole House bookings over 6 guests using column M values (€15 per extra guest)
+- ✅ **Google Sheets Integration**: Live sync for pricing, availability, and fee calculations
+- ✅ **Smart Booking Summary**: Conditional display of fees based on room selection and guest count
 
 # User Preferences
 
