@@ -90,6 +90,13 @@ export default function BookingSection() {
   // Fetch extra guest fee for specific date range (only when dates are selected)
   const { data: extraGuestFeeData } = useQuery<{ extraGuestFee: number }>({
     queryKey: ["/api/extra-guest-fee", checkInDate ? format(checkInDate, "yyyy-MM-dd") : null, checkOutDate ? format(checkOutDate, "yyyy-MM-dd") : null],
+    queryFn: async () => {
+      if (!checkInDate || !checkOutDate) return { extraGuestFee: 0 };
+      const startDate = format(checkInDate, "yyyy-MM-dd");
+      const endDate = format(checkOutDate, "yyyy-MM-dd");
+      const response = await fetch(`/api/extra-guest-fee?startDate=${startDate}&endDate=${endDate}`);
+      return response.json();
+    },
     enabled: !!(checkInDate && checkOutDate), // Only fetch when both dates are selected
   });
 
