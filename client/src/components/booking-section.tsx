@@ -78,6 +78,14 @@ export default function BookingSection() {
     refetchInterval: 1 * 60 * 1000, // Refetch every 1 minute
   });
 
+  // Fetch cleaning fee from Google Sheets cell N2
+  const { data: cleaningFeeData } = useQuery<{ cleaningFee: number }>({
+    queryKey: ["/api/cleaning-fee"],
+    refetchInterval: 1 * 60 * 1000, // Refetch every 1 minute to stay in sync with sheets
+  });
+
+  const cleaningFee = cleaningFeeData?.cleaningFee || 0;
+
   // Get unavailable dates from existing bookings for selected room type
   const bookingUnavailableDates = bookings
     .filter(booking => booking.roomType === selectedRoom || booking.roomType === "whole-house" || selectedRoom === "whole-house")
@@ -175,7 +183,8 @@ export default function BookingSection() {
     }
 
     const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
-    const totalPrice = nights * currentRoom.pricePerNight * 100; // Convert to cents
+    const roomCost = nights * currentRoom.pricePerNight;
+    const totalPrice = (roomCost + (selectedRoom === "whole-house" ? cleaningFee : 0)) * 100; // Convert to cents
 
     createBookingMutation.mutate({
       checkIn: format(checkInDate, "yyyy-MM-dd"),
@@ -205,7 +214,9 @@ export default function BookingSection() {
     ? Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24))
     : 0;
   
-  const totalPrice = nights * currentRoom.pricePerNight;
+  const roomCost = nights * currentRoom.pricePerNight;
+  const wholeHouseCleaningFee = selectedRoom === "whole-house" ? cleaningFee : 0;
+  const totalPrice = roomCost + wholeHouseCleaningFee;
 
   return (
     <section id="booking" className="py-16 bg-airbnb-light">
@@ -411,6 +422,12 @@ export default function BookingSection() {
                           <span className="text-airbnb-gray">Rate:</span>
                           <span className="text-airbnb-dark font-medium">€{currentRoom.pricePerNight} × {nights}</span>
                         </div>
+                        {selectedRoom === "whole-house" && wholeHouseCleaningFee > 0 && (
+                          <div className="flex justify-between">
+                            <span className="text-airbnb-gray">Whole house cleaning fee:</span>
+                            <span className="text-airbnb-dark font-medium">€{wholeHouseCleaningFee}</span>
+                          </div>
+                        )}
                       </>
                     )}
                   </div>

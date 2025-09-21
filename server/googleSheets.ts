@@ -124,6 +124,35 @@ export class GoogleSheetsService {
 
     return blocked;
   }
+
+  async getWholeHouseCleaningFee(): Promise<number> {
+    try {
+      const response = await this.sheets.spreadsheets.values.get({
+        spreadsheetId: SHEET_ID,
+        range: 'N2', // Read the cleaning fee from cell N2
+      });
+
+      const rows = response.data.values;
+      if (!rows || rows.length === 0 || !rows[0] || !rows[0][0]) {
+        console.log('No cleaning fee found in cell N2, defaulting to 0');
+        return 0;
+      }
+
+      const feeValue = rows[0][0];
+      const fee = parseFloat(feeValue.toString().replace(/[^\d.-]/g, '')); // Remove any currency symbols
+      
+      if (isNaN(fee)) {
+        console.log(`Invalid cleaning fee value in N2: ${feeValue}, defaulting to 0`);
+        return 0;
+      }
+
+      console.log(`Loaded whole house cleaning fee: €${fee}`);
+      return fee;
+    } catch (error) {
+      console.error('Error reading cleaning fee from Google Sheets:', error);
+      return 0;
+    }
+  }
 }
 
 export const googleSheetsService = new GoogleSheetsService();

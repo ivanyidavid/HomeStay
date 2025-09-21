@@ -48,6 +48,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get whole house cleaning fee from Google Sheets cell N2
+  app.get("/api/cleaning-fee", async (req, res) => {
+    try {
+      const cleaningFee = await googleSheetsService.getWholeHouseCleaningFee();
+      res.json({ cleaningFee });
+    } catch (error) {
+      console.error("Error fetching cleaning fee:", error);
+      res.status(500).json({ message: "Failed to fetch cleaning fee" });
+    }
+  });
+
   // Get availability for specific room type
   app.get("/api/availability/:roomType", async (req, res) => {
     try {
