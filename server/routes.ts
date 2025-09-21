@@ -65,6 +65,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get extra guest fee for specific date range from column M
+  app.get("/api/extra-guest-fee", async (req, res) => {
+    try {
+      const { startDate, endDate } = req.query;
+      
+      if (!startDate || !endDate) {
+        res.status(400).json({ message: "Start date and end date are required" });
+        return;
+      }
+      
+      const extraGuestFee = await googleSheetsService.getExtraGuestFeeForDateRange(
+        startDate as string,
+        endDate as string
+      );
+      res.json({ extraGuestFee });
+    } catch (error) {
+      console.error("Error fetching extra guest fee:", error);
+      res.status(500).json({ message: "Failed to fetch extra guest fee" });
+    }
+  });
+
   // Get availability for specific room type
   app.get("/api/availability/:roomType", async (req, res) => {
     try {

@@ -182,6 +182,95 @@ export class GoogleSheetsService {
       return 0;
     }
   }
+
+  async getExtraGuestFeeForDateRange(startDate: string, endDate: string): Promise<number> {
+    try {
+      const response = await this.sheets.spreadsheets.values.get({
+        spreadsheetId: SHEET_ID,
+        range: 'A:M', // Get data including column M for extra guest fees
+      });
+
+      const rows = response.data.values;
+      if (!rows || rows.length === 0) {
+        console.log('No data found in sheet for extra guest fees');
+        return 0;
+      }
+
+      const headerRow = rows[0];
+      let dateColumnIndex = 0;
+      let extraGuestFeeColumnIndex = -1;
+
+      // Find column M index (extra guest fee column)
+      headerRow.forEach((header: string, index: number) => {
+        if (index === 12) { // Column M is index 12 (0-based)
+          extraGuestFeeColumnIndex = index;
+        }
+      });
+
+      if (extraGuestFeeColumnIndex === -1) {
+        console.log('Column M (extra guest fee) not found');
+        return 0;
+      }
+
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      let totalExtraGuestFee = 0;
+      let daysCount = 0;
+
+      // Process each data row (skip header)
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const dateValue = row[dateColumnIndex];
+        
+        if (!dateValue) continue;
+
+        // Parse date
+        let formattedDate: string;
+        try {
+          const date = new Date(dateValue);
+          if (isNaN(date.getTime())) {
+            // Try parsing DD/MM/YYYY format
+            const parts = dateValue.split('/');
+            if (parts.length === 3) {
+              const day = parseInt(parts[0]);
+              const month = parseInt(parts[1]) - 1;
+              const year = parseInt(parts[2]);
+              const parsedDate = new Date(year, month, day);
+              formattedDate = parsedDate.toISOString().split('T')[0];
+            } else {
+              continue;
+            }
+          } else {
+            formattedDate = date.toISOString().split('T')[0];
+          }
+        } catch (error) {
+          continue;
+        }
+
+        // Check if date is within the booking range
+        const currentDate = new Date(formattedDate);
+        if (currentDate >= start && currentDate < end) {
+          const extraGuestFeeValue = row[extraGuestFeeColumnIndex];
+          if (extraGuestFeeValue) {
+            const fee = parseFloat(extraGuestFeeValue.toString().replace(/[^\d.-]/g, ''));
+            if (!isNaN(fee)) {
+              totalExtraGuestFee += fee;
+              daysCount++;
+            }
+          }
+        }
+      }
+
+      // Calculate average extra guest fee per day
+      const averageExtraGuestFee = daysCount > 0 ? totalExtraGuestFee / daysCount : 0;
+      
+      console.log(`Loaded extra guest fee for date range ${startDate} to ${endDate}: €${averageExtraGuestFee} per day (${daysCount} days)`);
+      return averageExtraGuestFee;
+    } catch (error) {
+      console.error('Error reading extra guest fees from Google Sheets:', error);
+      return 0;
+    }
+  }
 }
 
 export const googleSheetsService = new GoogleSheetsService();

@@ -87,6 +87,14 @@ export default function BookingSection() {
   const wholeHouseCleaningFee = cleaningFeeData?.wholeHouseCleaningFee || 0;
   const roomCleaningFee = cleaningFeeData?.roomCleaningFee || 0;
 
+  // Fetch extra guest fee for specific date range (only when dates are selected)
+  const { data: extraGuestFeeData } = useQuery<{ extraGuestFee: number }>({
+    queryKey: ["/api/extra-guest-fee", checkInDate ? format(checkInDate, "yyyy-MM-dd") : null, checkOutDate ? format(checkOutDate, "yyyy-MM-dd") : null],
+    enabled: !!(checkInDate && checkOutDate), // Only fetch when both dates are selected
+  });
+
+  const extraGuestFeePerDay = extraGuestFeeData?.extraGuestFee || 0;
+
   // Get unavailable dates from existing bookings for selected room type
   const bookingUnavailableDates = bookings
     .filter(booking => booking.roomType === selectedRoom || booking.roomType === "whole-house" || selectedRoom === "whole-house")
@@ -186,7 +194,12 @@ export default function BookingSection() {
     const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
     const roomCost = nights * currentRoom.pricePerNight;
     const applicableCleaningFee = selectedRoom === "whole-house" ? wholeHouseCleaningFee : roomCleaningFee;
-    const totalPrice = (roomCost + applicableCleaningFee) * 100; // Convert to cents
+    
+    // Calculate extra guest fee (only for whole house bookings with more than 6 guests)
+    const extraGuests = selectedRoom === "whole-house" && guests > 6 ? guests - 6 : 0;
+    const extraGuestFee = extraGuests * extraGuestFeePerDay;
+    
+    const totalPrice = (roomCost + applicableCleaningFee + extraGuestFee) * 100; // Convert to cents
 
     createBookingMutation.mutate({
       checkIn: format(checkInDate, "yyyy-MM-dd"),
@@ -219,7 +232,12 @@ export default function BookingSection() {
   const roomCost = nights * currentRoom.pricePerNight;
   const applicableWholeHouseCleaningFee = selectedRoom === "whole-house" ? wholeHouseCleaningFee : 0;
   const applicableRoomCleaningFee = selectedRoom !== "whole-house" ? roomCleaningFee : 0;
-  const totalPrice = roomCost + applicableWholeHouseCleaningFee + applicableRoomCleaningFee;
+  
+  // Calculate extra guest fee for display (only for whole house bookings with more than 6 guests)
+  const extraGuests = selectedRoom === "whole-house" && guests > 6 ? guests - 6 : 0;
+  const extraGuestFee = extraGuests * extraGuestFeePerDay;
+  
+  const totalPrice = roomCost + applicableWholeHouseCleaningFee + applicableRoomCleaningFee + extraGuestFee;
 
   return (
     <section id="booking" className="py-16 bg-airbnb-light">
@@ -427,6 +445,12 @@ export default function BookingSection() {
                           <div className="flex justify-between">
                             <span className="text-airbnb-gray">Room cleaning fee:</span>
                             <span className="text-airbnb-dark font-medium">€{applicableRoomCleaningFee}</span>
+                          </div>
+                        )}
+                        {selectedRoom === "whole-house" && extraGuests > 0 && extraGuestFee > 0 && (
+                          <div className="flex justify-between">
+                            <span className="text-airbnb-gray">Extra fee/guest above 6 guests:</span>
+                            <span className="text-airbnb-dark font-medium">€{extraGuestFeePerDay} × {extraGuests} = €{extraGuestFee}</span>
                           </div>
                         )}
                       </>
