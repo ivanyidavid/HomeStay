@@ -166,9 +166,9 @@ export default function GallerySection() {
 
       {/* Full-size image modal */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[95vh] w-auto h-auto p-0 overflow-hidden">
+        <DialogContent className="max-w-[95vw] max-h-[98vh] w-auto h-auto p-0 overflow-hidden">
           {selectedImage && (
-            <div className="relative bg-black flex items-center justify-center min-h-[50vh] max-h-[95vh]">
+            <div className="relative bg-black flex flex-col min-h-[50vh] max-h-[98vh]">
               {/* Close button */}
               <button
                 onClick={() => setSelectedImage(null)}
@@ -195,19 +195,19 @@ export default function GallerySection() {
                 <ChevronRight size={32} />
               </button>
               
-              {/* Main image */}
-              <div className="p-4 flex items-center justify-center w-full h-full">
+              {/* Main image container */}
+              <div className="flex-1 flex items-center justify-center p-4 pb-0">
                 <OptimizedImage
                   imageKey={selectedImage.imageKey}
-                  className="max-w-[90vw] max-h-[85vh] w-auto h-auto"
+                  className="max-w-[90vw] max-h-[calc(98vh-4rem)] w-auto h-auto"
                   objectFit="contain"
                   sizes="90vw"
                   priority={true}
                 />
               </div>
               
-              {/* Image counter */}
-              <div className="absolute bottom-4 left-4 right-4 text-center">
+              {/* Image counter - reserved space at bottom */}
+              <div className="flex-shrink-0 p-4 text-center">
                 <p className="text-white/80 text-sm">
                   {galleryImages.findIndex(img => img.id === selectedImage.id) + 1} of {galleryImages.length}
                 </p>
