@@ -20,7 +20,7 @@ const features = [
   {
     id: 2,
     title: "👥 Hosts Up to 11 Guests",
-    description: "Ideal for groups, team buildings, parties, and retreats. Three bedrooms plus convertible living spaces ensure everyone has comfort.",
+    description: "Ideal for individuals or couples who want to spend a few days to work, create or relax away from the city, but also for thematic retreats and team buildings.",
     image: bedroom1IMG9992,
     alt: "Comfortable bedroom",
     note: "Using actual photo bedroom1-IMG_9992-HDR"
