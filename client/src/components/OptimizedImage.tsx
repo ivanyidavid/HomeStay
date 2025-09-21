@@ -93,7 +93,7 @@ export default function OptimizedImage({
         alt={alt || imageData.alt}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
-        fetchPriority={priority ? 'high' : 'auto'}
+        fetchpriority={priority ? 'high' : 'auto'}
         style={imgStyle}
         width={width}
         height={height}

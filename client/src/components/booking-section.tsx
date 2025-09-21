@@ -12,12 +12,9 @@ import { apiRequest, queryClient } from "@/lib/queryClient";
 import { format, addDays, isAfter, isBefore, parseISO } from "date-fns";
 import type { Booking } from "@shared/schema";
 
-// Import room photos
-import bedroom1IMG9992 from "@assets/photos/bedroom1-IMG_9992-HDR.jpg";
-import bedroom2DSC8860 from "@assets/photos/bedroom2-DSC_8860-HDR.jpg";
-import bedroom2DSC8870 from "@assets/photos/bedroom2-DSC_8870.jpg";
-import bunkBedroomDSC8843 from "@assets/photos/bunk bedroom-DSC_8843.jpg";
-import commonRoomIMG0083 from "@assets/photos/common room-IMG_0083-HDR.jpg";
+// Import optimized image component
+import OptimizedImage from "@/components/OptimizedImage";
+import type { ImageKey } from "@/lib/imageMap";
 
 const roomOptions = [
   {
@@ -26,7 +23,7 @@ const roomOptions = [
     description: "Comfortable room with two single beds",
     maxGuests: 2,
     pricePerNight: 80,
-    image: bedroom2DSC8860,
+    imageKey: "bedroom2-DSC_8860-HDR" as ImageKey,
     features: ["2 Single Beds", "Shared Bathroom", "Mountain Views"]
   },
   {
@@ -35,7 +32,7 @@ const roomOptions = [
     description: "Cozy room with a comfortable double bed",
     maxGuests: 2,
     pricePerNight: 100,
-    image: bedroom1IMG9992,
+    imageKey: "bedroom1-IMG_9992-HDR" as ImageKey,
     features: ["1 Double Bed", "Private Bathroom", "Hill Views"]
   },
   {
@@ -44,7 +41,7 @@ const roomOptions = [
     description: "Fun room with bunk beds, perfect for families",
     maxGuests: 4,
     pricePerNight: 90,
-    image: bunkBedroomDSC8843,
+    imageKey: "bunk bedroom-DSC_8843" as ImageKey,
     features: ["1 Bunk Bed", "Shared Bathroom", "Family Friendly"]
   },
   {
@@ -53,7 +50,7 @@ const roomOptions = [
     description: "Entire guest house with all bedrooms and amenities",
     maxGuests: 11,
     pricePerNight: 150,
-    image: commonRoomIMG0083,
+    imageKey: "common room-IMG_0083-HDR" as ImageKey,
     features: ["All 3 Bedrooms", "2 Bathrooms", "Full Kitchen", "Living Room", "Terrace"]
   }
 ];
@@ -243,10 +240,13 @@ export default function BookingSection() {
                       data-testid={`room-option-${room.id}`}
                     >
                       <div className="p-4">
-                        <img 
-                          src={room.image} 
+                        <OptimizedImage
+                          imageKey={room.imageKey}
                           alt={room.name}
-                          className="w-full h-32 object-cover rounded-lg mb-3"
+                          className="w-full h-32 rounded-lg mb-3"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          objectFit="cover"
+                          priority={room.id === "whole-house"}
                         />
                         <h4 className="font-semibold text-sm text-airbnb-dark mb-1">
                           {room.name}
