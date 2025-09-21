@@ -40,11 +40,11 @@ export default function OptimizedImage({
   // Generate srcSet for WebP variants
   const webpSrcSet = Object.entries(imageData.webp)
     .sort(([a], [b]) => parseInt(a) - parseInt(b))
-    .map(([width, path]) => `/@assets/${path} ${width}w`)
+    .map(([width, path]) => `/assets/${path} ${width}w`)
     .join(', ');
 
   // Fallback srcSet for JPG (use original image at different sizes)
-  const fallbackSrc = `/@assets/${imageData.fallback}`;
+  const fallbackSrc = `/assets/${imageData.fallback}`;
 
   const handleLoad = () => {
     setIsLoading(false);
@@ -61,7 +61,7 @@ export default function OptimizedImage({
     transition: 'opacity 0.3s ease',
     opacity: isLoading ? 0 : 1,
     ...(isLoading && imageData.lqip && {
-      backgroundImage: `url(/@assets/${imageData.lqip})`,
+      backgroundImage: `url(/assets/${imageData.lqip})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     })
@@ -106,7 +106,7 @@ export default function OptimizedImage({
       {isLoading && imageData.lqip && (
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: `url(/@assets/${imageData.lqip})` }}
+          style={{ backgroundImage: `url(/assets/${imageData.lqip})` }}
         />
       )}
     </picture>

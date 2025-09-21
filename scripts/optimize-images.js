@@ -34,10 +34,24 @@ async function processImage(inputPath, filename) {
     const metadata = await sharp(inputPath).metadata();
     const originalWidth = metadata.width;
     
+    // Determine fallback format - convert HEIC to JPG, keep others as-is
+    let fallbackFilename = filename;
+    if (ext === '.heic') {
+      fallbackFilename = `${baseName}.jpg`;
+      // Convert HEIC to JPG as fallback
+      const fallbackPath = path.join(inputDir, fallbackFilename);
+      if (!fs.existsSync(fallbackPath)) {
+        await sharp(inputPath)
+          .jpeg({ quality: 90 })
+          .toFile(fallbackPath);
+        console.log(`✓ Created JPG fallback: ${fallbackFilename}`);
+      }
+    }
+    
     // Initialize image map entry
     imageMap[baseName] = {
       webp: {},
-      fallback: `photos/${filename}`,
+      fallback: `photos/${fallbackFilename}`,
       alt: baseName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
     };
 

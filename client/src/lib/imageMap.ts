@@ -4,12 +4,13 @@
 export const imageMap = {
   "IMG_5538": {
     "webp": {
+      "320": "photos/webp/IMG_5538-320.webp",
       "640": "photos/webp/IMG_5538-640.webp",
       "960": "photos/webp/IMG_5538-960.webp",
       "1280": "photos/webp/IMG_5538-1280.webp",
       "1600": "photos/webp/IMG_5538-1600.webp"
     },
-    "fallback": "photos/IMG_5538.HEIC",
+    "fallback": "photos/IMG_5538.jpg",
     "alt": "IMG_5538",
     "lqip": "photos/webp/IMG_5538-blur.webp"
   },
@@ -21,7 +22,7 @@ export const imageMap = {
       "1280": "photos/webp/IMG_5816-1280.webp",
       "1600": "photos/webp/IMG_5816-1600.webp"
     },
-    "fallback": "photos/IMG_5816.HEIC",
+    "fallback": "photos/IMG_5816.jpg",
     "alt": "IMG_5816",
     "lqip": "photos/webp/IMG_5816-blur.webp"
   },
@@ -45,7 +46,7 @@ export const imageMap = {
       "1280": "photos/webp/IMG_9806-1280.webp",
       "1600": "photos/webp/IMG_9806-1600.webp"
     },
-    "fallback": "photos/IMG_9806.HEIC",
+    "fallback": "photos/IMG_9806.jpg",
     "alt": "IMG_9806",
     "lqip": "photos/webp/IMG_9806-blur.webp"
   },
