@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleCors } from './lib/cors';
-import { getBlockedDatesForAllRooms, getBlockedDatesForRoom } from './lib/googleSheets';
+import { handleCors } from '../lib/cors';
+import { getBlockedDatesForAllRooms } from '../lib/googleSheets';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (handleCors(req, res)) return;
@@ -10,13 +10,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { roomType } = req.query;
-    
-    if (roomType && typeof roomType === 'string') {
-      const blockedDates = await getBlockedDatesForRoom(decodeURIComponent(roomType));
-      return res.json({ roomType, blockedDates });
-    }
-    
     const availability = await getBlockedDatesForAllRooms();
     return res.json(availability);
   } catch (error) {

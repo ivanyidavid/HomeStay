@@ -1,29 +1,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleCors } from './lib/cors';
-import { getBookings, getBooking, createBooking, updateBooking, deleteBooking, getBookingsByDateRange, type InsertBooking } from './lib/storage';
-import { getBlockedDatesForRoom } from './lib/googleSheets';
-import { sendBookingNotification } from './lib/email';
+import { handleCors } from '../lib/cors';
+import { getBookings, createBooking, getBookingsByDateRange, type InsertBooking } from '../lib/storage';
+import { getBlockedDatesForRoom } from '../lib/googleSheets';
+import { sendBookingNotification } from '../lib/email';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (handleCors(req, res)) return;
 
-  const { id, startDate, endDate } = req.query;
-
   if (req.method === 'GET') {
     try {
-      if (id && typeof id === 'string') {
-        const booking = getBooking(id);
-        if (!booking) {
-          return res.status(404).json({ message: 'Booking not found' });
-        }
-        return res.json(booking);
-      }
-      
-      if (startDate && endDate) {
-        const bookings = getBookingsByDateRange(startDate as string, endDate as string);
-        return res.json(bookings);
-      }
-      
       const bookings = getBookings();
       return res.json(bookings);
     } catch (error) {
@@ -115,38 +100,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     } catch (error) {
       console.error('Error creating booking:', error);
       return res.status(500).json({ message: 'Failed to create booking' });
-    }
-  }
-
-  if (req.method === 'PATCH') {
-    try {
-      if (!id || typeof id !== 'string') {
-        return res.status(400).json({ message: 'Booking ID is required' });
-      }
-      
-      const booking = updateBooking(id, req.body);
-      if (!booking) {
-        return res.status(404).json({ message: 'Booking not found' });
-      }
-      return res.json(booking);
-    } catch (error) {
-      return res.status(500).json({ message: 'Failed to update booking' });
-    }
-  }
-
-  if (req.method === 'DELETE') {
-    try {
-      if (!id || typeof id !== 'string') {
-        return res.status(400).json({ message: 'Booking ID is required' });
-      }
-      
-      const deleted = deleteBooking(id);
-      if (!deleted) {
-        return res.status(404).json({ message: 'Booking not found' });
-      }
-      return res.status(204).end();
-    } catch (error) {
-      return res.status(500).json({ message: 'Failed to delete booking' });
     }
   }
 

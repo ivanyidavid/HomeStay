@@ -1,7 +1,11 @@
 import { google } from 'googleapis';
 
 const SHEET_ID = '1xKU0YZdoOWrhEKOeBVPVLO-U9IYzTE6m6pKuOTc6-ZM';
-const API_KEY = process.env.GOOGLE_SHEETS_API_KEY || 'AIzaSyBcU26MCdKJAUYG1t-Zpb_ifUk0wyYYeQ4';
+const API_KEY = process.env.GOOGLE_SHEETS_API_KEY;
+
+if (!API_KEY) {
+  console.warn('Warning: GOOGLE_SHEETS_API_KEY environment variable is not set');
+}
 
 interface SheetAvailability {
   date: string;
