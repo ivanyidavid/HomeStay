@@ -1,0 +1,40 @@
+ No, it will NOT be a "clean and easy" refactoring.
+It is technically possible, but for your specific use case (Google Sheets + Bookings), moving from a standard Express server to Serverless Functions is often a trap that leads to frustrating bugs.
+Here is why this specific refactor is likely to be messy:
+1. The "Stateless" Headache
+Express (Current): Your server starts once. You can load variables into memory (e.g., let cachedPricing = ...) and keep them there for hours. You can maintain a persistent connection to Google APIs.
+Vercel Serverless: The "server" effectively dies after every single request.
+The Consequence: You have to re-authenticate with Google, re-open the connection to the spreadsheet, and re-fetch data every time a user clicks a button. This makes your app significantly slower ("Cold Starts").
+2. The Timeout Trap (The "Google Sheets" Issue)
+This is the biggest risk.
+Express: If your app takes 45 seconds to scan the spreadsheet to check availability, the user sees a loading spinner, but it works.
+Vercel:
+Hobby Plan: Hard limit of 10 seconds.
+Pro Plan: Hard limit of 60 seconds.
+The Reality: Google Sheets API is notoriously slow. If you have complex logic (e.g., "Check date X, then update cell Y, then send email"), you will likely hit the 10-second limit. Vercel will kill the process mid-save, potentially corrupting your booking data (e.g., the email sends, but the calendar doesn't update).
+3. Middleware Hell
+In Express, you probably have lines like app.use(cors()) or app.use(authMiddleware).
+You cannot just copy-paste this into Vercel.
+You have to manually wrap every single API file with helper functions to handle CORS and Authentication, or rewrite your logic to use Vercel's Edge Middleware. It is tedious work.
+4. Code Structure Changes
+You have to physically break your app apart.
+Current: One file (server.js) likely contains all your logic.
+Vercel: You need to split that into many files:
+api/get-availability.js
+api/book-appointment.js
+api/sync-pricing.js
+Shared logic (like your Google Auth helper) needs to be extracted into a utils/ folder and imported into every single file.
+My Honest Verdict
+Complexity Factor	Score	Reason
+Code structure	Medium	Splitting server.js is annoying but doable.
+Authentication	Medium	Moving auth logic to serverless requires care.
+Performance	High Risk	Google Sheets API + Serverless is a bad combination. It is too slow and will trigger timeouts.
+Reliability	High Risk	If a function times out halfway through a booking, you get "phantom bookings."
+Recommendation
+Do not refactor this for Vercel.
+You are taking a working app and introducing arbitrary constraints (timeouts, statelessness) that fight against what your app is trying to do (long syncs with Google Sheets).
+Do this instead:
+Keep the Backend as is: Deploy your Express backend to Railway or Render. It will take 5 minutes, cost $5/month (or be free on trial), and requires zero code changes.
+Deploy Frontend to Vercel: Deploy only your Vite/React folder to Vercel.
+Link them: Just update your frontend URL to point to https://my-backend-on-railway.app/api.
+This gives you the best of both worlds: Vercel's fast frontend hosting and a backend that is allowed to take its time talking to Google Sheets.
