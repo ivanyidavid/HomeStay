@@ -4,6 +4,14 @@ This is a rental house booking website built as a modern, Airbnb-style single-pa
 
 # Recent Changes
 
+## January 29, 2026 - Vercel Serverless Deployment Setup
+- ✅ **Vercel Serverless Functions**: Converted Express.js backend to Vercel serverless functions in `/api` folder
+- ✅ **API Endpoints**: All 7 endpoints converted (availability, bookings, cleaning-fee, extra-guest-fee)
+- ✅ **File-Based Routing**: Using Vercel's filesystem routing with dynamic routes `[id].ts` and `[roomType].ts`
+- ✅ **Environment Variables**: Google Sheets API key moved to `GOOGLE_SHEETS_API_KEY` env var (required for Vercel deployment)
+- ✅ **vercel.json**: Configured build command and output directory for Vite frontend
+- ⚠️ **Note**: In-memory storage is stateless on Vercel - booking persistence relies on Google Sheets
+
 ## September 21, 2025 - Dynamic Pricing System Implementation
 - ✅ **Complete Photo Optimization**: 57 photos converted to WebP with 60-85% mobile performance improvement
 - ✅ **Whole House Cleaning Fee**: Reads from Google Sheets cell N2 (€40) with real-time updates  
@@ -26,11 +34,25 @@ Preferred communication style: Simple, everyday language.
 - **Form Handling**: React Hook Form with Zod validation for type-safe form management
 
 ## Backend Architecture
-- **Runtime**: Node.js with Express.js framework
+- **Runtime**: Node.js with Express.js framework (local dev) / Vercel Serverless (production)
 - **Language**: TypeScript with ES modules
 - **API Design**: RESTful API endpoints for booking management
-- **Data Storage**: In-memory storage with interface for future database integration
+- **Data Storage**: In-memory storage (stateless on Vercel)
 - **Validation**: Zod schemas for request/response validation
+
+## Vercel Deployment Structure
+- **API Endpoints** (`/api` folder):
+  - `/api/availability/index.ts` - GET all room availability
+  - `/api/availability/[roomType].ts` - GET specific room availability
+  - `/api/bookings/index.ts` - GET all, POST new booking
+  - `/api/bookings/[id].ts` - GET/PATCH/DELETE single booking
+  - `/api/bookings/range.ts` - GET bookings by date range
+  - `/api/cleaning-fee.ts` - GET cleaning fees from Google Sheets
+  - `/api/extra-guest-fee.ts` - GET extra guest fees for date range
+- **Required Environment Variables for Vercel**:
+  - `GOOGLE_SHEETS_API_KEY` - Google Sheets API key for availability/pricing
+  - `EMAIL_USER` - SMTP email user for booking notifications
+  - `EMAIL_PASS` - SMTP email password
 
 ## Database Schema
 - **ORM**: Drizzle ORM with PostgreSQL dialect
