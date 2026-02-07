@@ -1,7 +1,11 @@
 import { google } from 'googleapis';
 
-const SHEET_ID = '1xKU0YZdoOWrhEKOeBVPVLO-U9IYzTE6m6pKuOTc6-ZM';
-const API_KEY = 'AIzaSyBcU26MCdKJAUYG1t-Zpb_ifUk0wyYYeQ4';
+const SHEET_ID = process.env.GOOGLE_SHEETS_ID || '1xKU0YZdoOWrhEKOeBVPVLO-U9IYzTE6m6pKuOTc6-ZM';
+const API_KEY = process.env.GOOGLE_SHEETS_API_KEY;
+
+if (!API_KEY) {
+  console.warn('GOOGLE_SHEETS_API_KEY environment variable not set. Google Sheets integration will not work.');
+}
 
 interface SheetAvailability {
   date: string;
@@ -13,6 +17,9 @@ export class GoogleSheetsService {
   private sheets;
 
   constructor() {
+    if (!API_KEY) {
+      throw new Error('GOOGLE_SHEETS_API_KEY environment variable is not set');
+    }
     this.sheets = google.sheets({
       version: 'v4',
       auth: API_KEY

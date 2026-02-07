@@ -1,0 +1,38 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "envPrefix": [
+    "DATABASE_URL",
+    "GOOGLE_SHEETS_API_KEY",
+    "GOOGLE_SHEETS_ID",
+    "EMAIL_USER",
+    "EMAIL_PASS",
+    "EMAIL_HOST",
+    "EMAIL_PORT",
+    "SESSION_SECRET"
+  ],
+  "headers": [
+    {
+      "source": "/assets/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}

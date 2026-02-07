@@ -28,6 +28,14 @@ export class EmailService {
     if (!emailUser || !emailPass) {
       console.log('Email credentials not provided. Email notifications disabled.');
       return;
+        if (!emailUser) {
+          console.warn('EMAIL_USER environment variable not set. Email notifications will be disabled.');
+          return;
+        }
+        if (!emailPass) {
+          console.warn('EMAIL_PASS environment variable not set. Email notifications will be disabled.');
+          return;
+        }
     }
 
     const config: EmailConfig = {
