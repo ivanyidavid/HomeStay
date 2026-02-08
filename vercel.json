@@ -4,16 +4,6 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "envPrefix": [
-    "DATABASE_URL",
-    "GOOGLE_SHEETS_API_KEY",
-    "GOOGLE_SHEETS_ID",
-    "EMAIL_USER",
-    "EMAIL_PASS",
-    "EMAIL_HOST",
-    "EMAIL_PORT",
-    "SESSION_SECRET"
-  ],
   "headers": [
     {
       "source": "/assets/:path*",
