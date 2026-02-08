@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { googleSheetsService } from '@/server/googleSheets';
+import { googleSheetsService } from '../server/googleSheets';
 import { z } from 'zod';
 
 const calculatePriceSchema = z.object({

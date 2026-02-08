@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { storage } from '@/server/storage';
-import { insertBookingSchema } from '@shared/schema';
+import { storage } from '../../server/storage';
+import { insertBookingSchema } from '../../shared/schema';
 import { z } from 'zod';
-import { googleSheetsService } from '@/server/googleSheets';
-import { emailService } from '@/server/emailService';
+import { googleSheetsService } from '../../server/googleSheets';
+import { emailService } from '../../server/emailService';
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   // Enable CORS
